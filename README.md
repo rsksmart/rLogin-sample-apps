@@ -5,3 +5,7 @@
 <p align="middle">
   Sample Apps for rLogin
 </p>
+
+Examples on how to use [rLogin](https://github.com/rsksmart/rlogin) in an application.
+
+- [basic-dapp](/rsksmart/rlogin-sample-apps/tree/main/basic-dapp) is a basic application that interacts with the user's wallet
