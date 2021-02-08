@@ -23,7 +23,7 @@ const rLogin = new RLogin({
 })
 
 function App() {
-  const [provider, setProvider] = useState(null)
+  const [web3Provider, setWeb3Provider] = useState(null)
 
   // wallet info:
   const [account, setAccount] = useState(null)
@@ -50,18 +50,17 @@ function App() {
         ethQuery.accounts().then(accounts => setAccount(accounts[0]))
         ethQuery.net_version().then(id => setChainId(id))
 
-        // Listen to the events emitted by the wallet. If changing account or chainId
-        // remove the listeners below and connect again.
-        const handleAccountOrChainChange = () => {
+        // Listen to the events emitted by the wallet. If changing account, remove the listeners
+        // below and connect again. If disconnect or change chains, then logout.
+        provider.on('accountsChanged', () => {
           provider.removeAllListeners()
           handleConnectButton()
-        }
-        provider.on('accountsChanged', handleAccountOrChainChange)
-        provider.on('chainChanged', handleAccountOrChainChange)
-        provider.on('disconnect', handleLogOut)
+        })
+        provider.on('chainChanged', () => handleLogOut(provider))
+        provider.on('disconnect', () => handleLogOut(provider))
 
-        // finally, set in local variable to be used elsewhere
-        setProvider(provider)
+        // finally, set the provider in local state to be used for signing and sending transactions
+        setWeb3Provider(provider)
       })
       .catch(err => err.message && setConnectResponse(`[ERROR]: ${err.message}`))
   }
@@ -77,7 +76,7 @@ function App() {
     setSignDataResponse(null)
 
     providerRPC(
-      provider, 
+      web3Provider,
       {
         method: 'personal_sign',
         params: [ value, account ]
@@ -92,7 +91,7 @@ function App() {
     setSendResponse(null)
 
     providerRPC(
-      provider,
+      web3Provider,
       {
         method: 'eth_sendTransaction',
         params: [{ from: account, to, value }]
@@ -103,10 +102,8 @@ function App() {
   }
 
   // handle logging out
-  const handleLogOut = () => {
-    // clear the cachedProvider from localStorage    
-    rLogin.clearCachedProvider()
-
+  const handleLogOut = (provider) => {
+    console.log(provider)
     // if WalletConnect
     if (provider.wc) {
       // Send the disconnect() function to the wallet to close the connection, and 
@@ -114,10 +111,13 @@ function App() {
       provider.disconnect()
     }
 
+    // clear the cachedProvider from localStorage    
+    rLogin.clearCachedProvider()
+
     // remove EIP 1193 listeners
     provider.removeAllListeners()
 
-    setProvider(null)
+    setWeb3Provider(null)
 
     // reset the useState responses (sample app specific):
     setAccount(null)
@@ -125,7 +125,6 @@ function App() {
     setConnectResponse(null)
     setSignDataResponse(null)
     setSendResponse(null)
-
   }
 
   return (
@@ -137,13 +136,13 @@ function App() {
       <section id="login">
         <h2>Start here</h2>
         <p>
-          <button onClick={handleConnectButton} disabled={!!provider}>Connect with rLogin</button>
-          <button onClick={handleLogOut} disabled={!provider}>Logout</button>
+          <button onClick={handleConnectButton} disabled={!!web3Provider}>Connect with rLogin</button>
+          <button onClick={() => handleLogOut(web3Provider)} disabled={!web3Provider}>Logout</button>
         </p>
         <div className="response">{connectResponse}</div>
       </section>
 
-      {provider && (
+      {web3Provider && (
         <div className="loggedIn">
           <section id="usersInfo">
             <h2>Wallet:</h2>
