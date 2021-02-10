@@ -31,6 +31,9 @@ const App = () => {
   const [account, setAccount] = useState(null)
   const [chainId, setChainId] = useState(null)
 
+  // datavault:
+  const [dataVaultKeys, setDataVaultKeys] = useState(null)
+
   const handleLogin = () => {
     rLogin.connect()
       .then(response => {
@@ -51,6 +54,10 @@ const App = () => {
         setRLoginResponse(response)
       })
       .catch(err => console.log('error!', err))
+  }
+
+  const getDataVaultKeys = () => {
+    rLoginResponse.dataVault.getKeys().then(keys => setDataVaultKeys(keys))
   }
 
   // handle logging out
@@ -75,7 +82,7 @@ const App = () => {
 
       <section id="connect">
         <h2>Start here!</h2>
-        <p>@todo: tell user prereqs to signing in. Email Cred, and DD name!</p>
+        <p>This service requires a declarative detail "NAME" and an Email credential saved into your datavault. To get the email credential, use the <a href="https://rsksmart.github.io/email-vc-issuer" target="_blank" rel="noreferrer">Email VC Issuer</a>. To set your name, log on to the <a href="https://rsksmart.github.io/rif-identity-manager/" target="_blank" rel="noreferrer">RIF Identity Manager</a>, click on the pencil icon at the top and set the "Name" field.</p>
         <RLoginButton onClick={handleLogin} disabled={rLoginResponse}>Login with rLogin</RLoginButton>
         <button onClick={handleLogOut} disabled={!rLoginResponse}>Logout</button>
         <div className="response">
@@ -84,15 +91,26 @@ const App = () => {
       </section>
 
       {rLoginResponse && (
-        <div className="loggedIn">
-          <section id="usersInfo">
-            <h2>Welcome!</h2>
+        <>
+          <div className="loggedIn">
+            <section id="usersInfo">
+              <h2>Welcome!</h2>
+              <ul>
+                {account && <li><strong>Address: </strong>{account}</li>}
+                {chainId && <li><strong>ChainId: </strong>{chainId}</li>}
+              </ul>
+            </section>
+          </div>
+
+          <div className="dataVault">
+            <h2>DataVault</h2>
+            <p>Since we connected to the DataVault when logging in, it is returned as a parameter in the rLogin response.</p>
+            <button onClick={getDataVaultKeys} disabled={!!dataVaultKeys}>Get DV keys</button>
             <ul>
-              {account && <li><strong>Address: </strong>{account}</li>}
-              {chainId && <li><strong>ChainId: </strong>{chainId}</li>}
+              {dataVaultKeys && dataVaultKeys.map(name => <li key={name}>{name}</li>)}
             </ul>
-          </section>
-        </div>
+          </div>
+        </>
       )}
     </div>
   );
