@@ -31,8 +31,9 @@ const App = () => {
   const [account, setAccount] = useState(null)
   const [chainId, setChainId] = useState(null)
 
-  // datavault:
-  const [dataVaultKeys, setDataVaultKeys] = useState(null)
+  // dataVault - simple storage for keys and content, and loading boolean
+  const [dataVaultContent, setDataVaultContent] = useState([])
+  const [dataVaultLoading, setDataVaultLoading] = useState(false)
 
   const handleLogin = () => {
     rLogin.connect()
@@ -56,8 +57,35 @@ const App = () => {
       .catch(err => console.log('error!', err))
   }
 
+  /**
+   * Get the user's keys from the dataVault, then convert the array response
+   * into a simple object of { key: 'TheKey', content: [] } to be used with
+   * the getDataVaultContent method below
+   */
   const getDataVaultKeys = () => {
-    rLoginResponse.dataVault.getKeys().then(keys => setDataVaultKeys(keys))
+    setDataVaultLoading(true)
+    rLoginResponse.dataVault.getKeys()
+      .then(keys => {
+        let keyArray = []
+        keys.map(key => keyArray.push({key, content: [] }))
+        setDataVaultContent(keyArray)
+      })
+      .finally(() => setDataVaultLoading(false))
+  }
+
+  /**
+   * Get DataVaultContent
+   * Given a key, return the content that is saved under that key
+   * @param {string} key
+   */
+  const getDataVaultContent = (key) => {
+    setDataVaultLoading(true)
+    rLoginResponse.dataVault.get({ key })
+      .then(content => {
+        const newContentState = dataVaultContent.map(item => item.key === key ? { key, content: content} : item)
+        setDataVaultContent(newContentState)
+      })
+      .finally(() => setDataVaultLoading(false))
   }
 
   // handle logging out
@@ -72,6 +100,7 @@ const App = () => {
     setRLoginResponse(null)
     setAccount(null)
     setChainId(null)
+    setDataVaultContent([])
   }
 
   return (
@@ -105,10 +134,34 @@ const App = () => {
           <div className="dataVault">
             <h2>DataVault</h2>
             <p>Since we connected to the DataVault when logging in, it is returned as a parameter in the rLogin response.</p>
-            <button onClick={getDataVaultKeys} disabled={!!dataVaultKeys}>Get DV keys</button>
-            <ul>
-              {dataVaultKeys && dataVaultKeys.map(name => <li key={name}>{name}</li>)}
-            </ul>
+            <button onClick={getDataVaultKeys} disabled={dataVaultContent.length !== 0}>Get DV keys</button>
+            {dataVaultLoading && <p>Loading...</p>}
+
+            <table>
+              <thead>
+                <tr>
+                  <td width="25%">Key</td>
+                  <td>Content</td>
+                  <td width="25%">Actions</td>
+                </tr>
+              </thead>
+              {dataVaultContent && dataVaultContent.map(dataVaultItem => (
+                <tr key={dataVaultItem.key}>
+                  <td>{dataVaultItem.key}</td>
+                  <td>
+                    {dataVaultItem.content.map(content => <p key={content.content}>{content.content}</p>)}
+                  </td>
+                  <td>
+                    {dataVaultItem.content.length === 0 && (
+                      <button
+                        onClick={() => getDataVaultContent(dataVaultItem.key)}
+                        disabled={dataVaultLoading}
+                      >Get Content</button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </table>
           </div>
         </>
       )}

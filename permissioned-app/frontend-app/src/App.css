@@ -47,3 +47,17 @@ input {
 .response:empty {
   display: none;
 }
+
+table {
+  width: 100%;
+  padding: 25px;
+  text-align: left;
+}
+
+thead {
+  font-weight: bold;
+}
+
+td {
+  border-bottom: 1px solid #e1e1e1;
+}
