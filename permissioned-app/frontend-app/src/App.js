@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import RLogin from '@rsksmart/rlogin'
+import RLogin, { RLoginButton } from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import Eth from 'ethjs-query'
 import './App.css';
@@ -7,7 +7,7 @@ import './App.css';
 // Create a new rLogin instance with your custom providerOptions outside of the 
 // component.
 const rLogin = new RLogin({
-  cacheProvider: true,
+  cacheProvider: false,
   providerOptions: {
     walletconnect: {
       package: WalletConnectProvider,
@@ -19,21 +19,24 @@ const rLogin = new RLogin({
       }
     }
   },
-  supportedChains: [30, 31]
+  supportedChains: [30, 31],
+  backendUrl: 'http://localhost:3007'
 })
 
 const App = () => {
-  const [web3Provider, setWeb3Provider] = useState(null)
-  const [errorMessage, setErrorMessage] = useState(null)
+  // response from connecting to a provider with rLogin:
+  const [rLoginResponse, setRLoginResponse] = useState(null)
 
   // wallet info:
   const [account, setAccount] = useState(null)
   const [chainId, setChainId] = useState(null)
 
   const handleLogin = () => {
-    console.log('loggin in!')
     rLogin.connect()
-      .then(provider => {
+      .then(response => {
+        // set a local variable for the response:
+        const provider = response.provider
+
         // Use ethQuery to get the user's account and the chainId
         const ethQuery = new Eth(provider)
         ethQuery.accounts().then(accounts => setAccount(accounts[0]))
@@ -45,29 +48,21 @@ const App = () => {
         provider.on('disconnect', () => handleLogOut(provider))
 
         //finally, set web3Provider with useState
-        setWeb3Provider(provider)
+        setRLoginResponse(response)
       })
-      .catch(err => setErrorMessage(err.message || 'Unknown Error'))
+      .catch(err => console.log('error!', err))
   }
 
   // handle logging out
-  const handleLogOut = (provider) => {
-    // if WalletConnect
-    if (provider.wc) {
-      // Send the disconnect() function to the wallet to close the connection, and 
-      // remove the localStorage item 'walletconnect' that it saved:
-      provider.disconnect()
-    }
+  const handleLogOut = () => {
+    // remove EIP 1193 listeners that were set above
+    rLoginResponse.provider.removeAllListeners()
 
-    // clear the cachedProvider from localStorage    
-    rLogin.clearCachedProvider()
-
-    // remove EIP 1193 listeners
-    provider.removeAllListeners()
-
-    setWeb3Provider(null)
+    // send the disconnect method
+    rLoginResponse.disconnect()
 
     // reset the useState responses (sample app specific):
+    setRLoginResponse(null)
     setAccount(null)
     setChainId(null)
   }
@@ -80,18 +75,18 @@ const App = () => {
 
       <section id="connect">
         <h2>Start here!</h2>
-        <button onClick={handleLogin} disabled={web3Provider}>Login!</button>
-        <button onClick={() => handleLogOut(web3Provider)} disabled={!web3Provider}>Logout</button>
+        <p>@todo: tell user prereqs to signing in. Email Cred, and DD name!</p>
+        <RLoginButton onClick={handleLogin} disabled={rLoginResponse}>Login with rLogin</RLoginButton>
+        <button onClick={handleLogOut} disabled={!rLoginResponse}>Logout</button>
         <div className="response">
-          {web3Provider && <>Connected</>}
-          {errorMessage && errorMessage}
+          {rLoginResponse && <>Connected</>}
         </div>
       </section>
 
-      {web3Provider && (
+      {rLoginResponse && (
         <div className="loggedIn">
           <section id="usersInfo">
-            <h2>Wallet:</h2>
+            <h2>Welcome!</h2>
             <ul>
               {account && <li><strong>Address: </strong>{account}</li>}
               {chainId && <li><strong>ChainId: </strong>{chainId}</li>}

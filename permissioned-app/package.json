@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "backend:start": "node backend/index.js",
+    "start:backend": "node backend/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
