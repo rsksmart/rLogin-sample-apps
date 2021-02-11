@@ -16,9 +16,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - [WalletConnect Web3 Provider](https://github.com/WalletConnect/walletconnect-monorepo/tree/next/packages/providers/web3-provider) - Used for WalletConnect. This is optional if you don't wish to support WalletConnect.
   - [ethjs-query](https://github.com/ethjs/ethjs-query) - Used to query the Ethereum RPC layer. However, you could also use ether.js, or web3.js, if you'd prefer.
 
-## Available Scripts
+## Backend (server) Available Scripts
 
-In the project directory, you can run:
+In the `backend` directory, you can run:
+
+### `node index.js`
+
+Starts the server used to authenticate or signup users.
+
+## Front End Available Scripts
+
+In the `frontend-app` directory, you can run:
 
 ### `yarn start`
 
