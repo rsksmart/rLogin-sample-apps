@@ -17,6 +17,16 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
+
+// We expect to have a name and an email credential here. You could also 
+// check the DID matches a list or DIDs if this was signingIn.
+const signupBusinessLogic = (payload) => {
+  console.log(payload);
+
+  // return true is an email credential and name declarative detail is provided
+  return (payload.sd.credentials.Email && payload.sd.claims.Name)
+}
+
 const authMiddleware = didAuth.default({
   serviceDid,
   serviceSigner,
@@ -24,7 +34,7 @@ const authMiddleware = didAuth.default({
   challengeSecret,
   requiredCredentials: ['Email'],
   requiredClaims: ['Name'],
-  signupBusinessLogic: (payload) => { console.log(payload); return true }
+  signupBusinessLogic
 })(app)
 
 app.use(authMiddleware)

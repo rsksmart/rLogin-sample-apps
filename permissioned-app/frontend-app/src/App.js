@@ -46,7 +46,8 @@ const App = () => {
         ethQuery.net_version().then(id => setChainId(id))
 
         // listen to change events and log out if any of them happen, passing
-        // the rLogin response to the logout function.
+        // the rLogin response to the logout function as it has not been saved
+        // into useState yet.
         provider.on('accountsChanged', () => handleLogOut(response))
         provider.on('chainChanged', () => handleLogOut(response))
         provider.on('disconnect', () => handleLogOut(response))
@@ -120,20 +121,17 @@ const App = () => {
           {rLoginResponse && <>Connected</>}
         </div>
       </section>
-
       {rLoginResponse && (
-        <>
-          <div className="loggedIn">
-            <section id="usersInfo">
-              <h2>Welcome!</h2>
-              <ul>
-                {account && <li><strong>Address: </strong>{account}</li>}
-                {chainId && <li><strong>ChainId: </strong>{chainId}</li>}
-              </ul>
-            </section>
-          </div>
+        <div className="loggedIn">
+          <section id="usersInfo">
+            <h2>Welcome!</h2>
+            <ul>
+              {account && <li><strong>Address: </strong>{account}</li>}
+              {chainId && <li><strong>ChainId: </strong>{chainId}</li>}
+            </ul>
+          </section>
 
-          <div className="dataVault">
+          <section className="dataVault">
             <h2>DataVault</h2>
             <p>Since we connected to the DataVault when logging in, it is returned as a parameter in the rLogin response.</p>
             <button onClick={getDataVaultKeys} disabled={dataVaultContent.length !== 0}>Get DV keys</button>
@@ -164,8 +162,8 @@ const App = () => {
                 </tr>
               ))}
             </table>
-          </div>
-        </>
+          </section>
+        </div>
       )}
     </div>
   );

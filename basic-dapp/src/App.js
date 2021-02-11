@@ -55,7 +55,10 @@ function App() {
 
         // Listen to the events emitted by the wallet. If changing account, remove the listeners
         // below and connect again. If disconnect or change chains, then logout.
-        provider.on('accountsChanged', () => {
+        provider.on('accountsChanged', (accounts) => {
+          if (accounts.length === 0) {
+            return handleLogOut(response)
+          }
           provider.removeAllListeners()
           handleLogin()
         })
