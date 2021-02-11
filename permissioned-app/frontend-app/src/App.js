@@ -38,7 +38,6 @@ const App = () => {
   const handleLogin = () => {
     rLogin.connect()
       .then(response => {
-        // set a local variable for the response:
         const provider = response.provider
 
         // Use ethQuery to get the user's account and the chainId
@@ -46,12 +45,16 @@ const App = () => {
         ethQuery.accounts().then(accounts => setAccount(accounts[0]))
         ethQuery.net_version().then(id => setChainId(id))
 
-        // listen to change events and log out if any of them happen
-        provider.on('accountsChanged', () => handleLogOut(provider))
-        provider.on('chainChanged', () => handleLogOut(provider))
-        provider.on('disconnect', () => handleLogOut(provider))
+        // listen to change events and log out if any of them happen, passing
+        // the rLogin response to the logout function as it has not been saved
+        // into useState yet.
+        provider.on('accountsChanged', () => handleLogOut(response))
+        provider.on('chainChanged', () => handleLogOut(response))
+        provider.on('disconnect', () => handleLogOut(response))
 
-        //finally, set web3Provider with useState
+        // finally, set setRLoginResponse with useState
+        // when the JS is compiled this variable is set after the promise is
+        // resolved which is why it is at the very end.
         setRLoginResponse(response)
       })
       .catch(err => console.log('error!', err))
@@ -89,12 +92,12 @@ const App = () => {
   }
 
   // handle logging out
-  const handleLogOut = () => {
+  const handleLogOut = (response) => {
     // remove EIP 1193 listeners that were set above
-    rLoginResponse.provider.removeAllListeners()
+    response.provider.removeAllListeners()
 
     // send the disconnect method
-    rLoginResponse.disconnect()
+    response.disconnect()
 
     // reset the useState responses (sample app specific):
     setRLoginResponse(null)
@@ -113,25 +116,22 @@ const App = () => {
         <h2>Start here!</h2>
         <p>This service requires a declarative detail "NAME" and an Email credential saved into your datavault. To get the email credential, use the <a href="https://rsksmart.github.io/email-vc-issuer" target="_blank" rel="noreferrer">Email VC Issuer</a>. To set your name, log on to the <a href="https://rsksmart.github.io/rif-identity-manager/" target="_blank" rel="noreferrer">RIF Identity Manager</a>, click on the pencil icon at the top and set the "Name" field.</p>
         <RLoginButton onClick={handleLogin} disabled={rLoginResponse}>Login with rLogin</RLoginButton>
-        <button onClick={handleLogOut} disabled={!rLoginResponse}>Logout</button>
+        <button onClick={() => handleLogOut(rLoginResponse)} disabled={!rLoginResponse}>Logout</button>
         <div className="response">
           {rLoginResponse && <>Connected</>}
         </div>
       </section>
-
       {rLoginResponse && (
-        <>
-          <div className="loggedIn">
-            <section id="usersInfo">
-              <h2>Welcome!</h2>
-              <ul>
-                {account && <li><strong>Address: </strong>{account}</li>}
-                {chainId && <li><strong>ChainId: </strong>{chainId}</li>}
-              </ul>
-            </section>
-          </div>
+        <div className="loggedIn">
+          <section id="usersInfo">
+            <h2>Welcome!</h2>
+            <ul>
+              {account && <li><strong>Address: </strong>{account}</li>}
+              {chainId && <li><strong>ChainId: </strong>{chainId}</li>}
+            </ul>
+          </section>
 
-          <div className="dataVault">
+          <section className="dataVault">
             <h2>DataVault</h2>
             <p>Since we connected to the DataVault when logging in, it is returned as a parameter in the rLogin response.</p>
             <button onClick={getDataVaultKeys} disabled={dataVaultContent.length !== 0}>Get DV keys</button>
@@ -162,8 +162,8 @@ const App = () => {
                 </tr>
               ))}
             </table>
-          </div>
-        </>
+          </section>
+        </div>
       )}
     </div>
   );

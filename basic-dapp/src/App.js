@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import RLogin from '@rsksmart/rlogin'
+import RLogin, { RLoginButton } from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import Eth from 'ethjs-query'
 import './App.css';
@@ -23,7 +23,7 @@ const rLogin = new RLogin({
 })
 
 function App() {
-  const [web3Provider, setWeb3Provider] = useState(null)
+  const [rLoginResponse, setRLoginResponse] = useState(null)
 
   // wallet info:
   const [account, setAccount] = useState(null)
@@ -40,9 +40,12 @@ function App() {
   const [sendResponse, setSendResponse] = useState(null)
 
   // Use the rLogin instance to connect to the provider
-  const handleConnectButton = () => {
+  const handleLogin = () => {
     rLogin.connect()
-      .then(provider => {
+      .then(response => {
+        // set a local variable for the response:
+        const provider = response.provider
+
         setConnectResponse('Connected')
 
         // Use ethQuery to get the user's account and the chainId
@@ -52,15 +55,18 @@ function App() {
 
         // Listen to the events emitted by the wallet. If changing account, remove the listeners
         // below and connect again. If disconnect or change chains, then logout.
-        provider.on('accountsChanged', () => {
+        provider.on('accountsChanged', (accounts) => {
+          if (accounts.length === 0) {
+            return handleLogOut(response)
+          }
           provider.removeAllListeners()
-          handleConnectButton()
+          handleLogin()
         })
-        provider.on('chainChanged', () => handleLogOut(provider))
-        provider.on('disconnect', () => handleLogOut(provider))
+        provider.on('chainChanged', () => handleLogOut(response))
+        provider.on('disconnect', () => handleLogOut(response))
 
         // finally, set the provider in local state to be used for signing and sending transactions
-        setWeb3Provider(provider)
+        setRLoginResponse(response)
       })
       .catch(err => err.message && setConnectResponse(`[ERROR]: ${err.message}`))
   }
@@ -73,10 +79,10 @@ function App() {
 
   // Sign data
   const handleSignData = (value) => {
-    setSignDataResponse(null)
+    setSignDataResponse('loading...')
 
     providerRPC(
-      web3Provider,
+      rLoginResponse.provider,
       {
         method: 'personal_sign',
         params: [ value, account ]
@@ -88,10 +94,10 @@ function App() {
 
   // Send transaction
   const handleSendTransaction = (to, value) => {
-    setSendResponse(null)
+    setSendResponse('loading...')
 
     providerRPC(
-      web3Provider,
+      rLoginResponse.provider,
       {
         method: 'eth_sendTransaction',
         params: [{ from: account, to, value }]
@@ -102,24 +108,15 @@ function App() {
   }
 
   // handle logging out
-  const handleLogOut = (provider) => {
-    console.log(provider)
-    // if WalletConnect
-    if (provider.wc) {
-      // Send the disconnect() function to the wallet to close the connection, and 
-      // remove the localStorage item 'walletconnect' that it saved:
-      provider.disconnect()
-    }
+  const handleLogOut = (response) => {
+    // remove EIP 1193 listeners that were set above
+    response.provider.removeAllListeners()
 
-    // clear the cachedProvider from localStorage    
-    rLogin.clearCachedProvider()
-
-    // remove EIP 1193 listeners
-    provider.removeAllListeners()
-
-    setWeb3Provider(null)
+    // send the disconnect method
+    response.disconnect()
 
     // reset the useState responses (sample app specific):
+    setRLoginResponse(null)
     setAccount(null)
     setChainId(null)
     setConnectResponse(null)
@@ -136,13 +133,13 @@ function App() {
       <section id="login">
         <h2>Start here</h2>
         <p>
-          <button onClick={handleConnectButton} disabled={!!web3Provider}>Connect with rLogin</button>
-          <button onClick={() => handleLogOut(web3Provider)} disabled={!web3Provider}>Logout</button>
+          <RLoginButton onClick={handleLogin} disabled={rLoginResponse}>Connect with rLogin</RLoginButton>
+          <button onClick={() => handleLogOut(rLoginResponse)} disabled={!rLoginResponse}>Logout</button>
         </p>
         <div className="response">{connectResponse}</div>
       </section>
 
-      {web3Provider && (
+      {rLoginResponse && (
         <div className="loggedIn">
           <section id="usersInfo">
             <h2>Wallet:</h2>
