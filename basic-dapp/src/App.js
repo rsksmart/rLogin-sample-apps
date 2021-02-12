@@ -68,7 +68,9 @@ function App() {
         // finally, set the provider in local state to be used for signing and sending transactions
         setRLoginResponse(response)
       })
-      .catch(err => err.message && setConnectResponse(`[ERROR]: ${err.message}`))
+      // catch an error and if there is a message display it. Closing WalletConnect without a
+      // connection will throw an error with no response, which is why we check:
+      .catch(err => err && err.message && setConnectResponse(`[ERROR]: ${err.message}`))
   }
 
   // Nifty Wallet handles requests to the provider differently than MetaMask & WalletConnect
