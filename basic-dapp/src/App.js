@@ -70,7 +70,8 @@ function App() {
       })
       // catch an error and if there is a message display it. Closing WalletConnect without a
       // connection will throw an error with no response, which is why we check:
-      .catch(err => err && err.message && setConnectResponse(`[ERROR]: ${err.message}`))
+      .catch(error => console.log('the error:', error))
+      // .catch(err => err && err.message && setConnectResponse(`[ERROR]: ${err.message}`))
   }
 
   // Nifty Wallet handles requests to the provider differently than MetaMask & WalletConnect
@@ -156,7 +157,7 @@ function App() {
             <p>
               <label htmlFor="dataInput">Value: </label>
               <input name="dataInput" type="text" value={signDataInput} onChange={evt => setSignDataInput(evt.target.value)} />
-              <button onClick={() => handleSignData(signDataInput)}>Sign Data</button>
+              <button className="sign" onClick={() => handleSignData(signDataInput)}>Sign Data</button>
             </p>
             
             <p>Signed Data Response:</p>
@@ -166,16 +167,16 @@ function App() {
           <section id="sendTrancation">
             <h2>Send Transaction</h2>
             <p>
-              <label htmlFor="sendTo">Send to: </label>
-              <input name="sendToInput" type="text" value={sendToInput} onChange={evt => setSendToInput(evt.target.value)} />
+              <label htmlFor="sendToInput">Send to: </label>
+              <input id="sendToInput" name="sendToInput" type="text" value={sendToInput} onChange={evt => setSendToInput(evt.target.value)} />
             </p>
             <p>
               <label htmlFor="sendAmount">Amount: </label>
               <input name="sendAmount" type="number" value={sendAmount} onChange={evt => setSendAmount(evt.target.value)} />
             </p>
-            <p><button onClick={() => handleSendTransaction(sendToInput, sendAmount)}>Send Transaction</button></p>
+            <p><button className="send" onClick={() => handleSendTransaction(sendToInput, sendAmount)}>Send Transaction</button></p>
             <p>Send Response:</p>
-            <div className="sendResponse">{sendResponse}</div>
+            <div className="response">{sendResponse}</div>
           </section>
         </div>
       )}

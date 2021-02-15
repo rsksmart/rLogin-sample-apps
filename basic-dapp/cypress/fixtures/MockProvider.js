@@ -8,8 +8,18 @@ export const currentProvider = (selectedAddress, networkVersion) => {
 
     request: function(props, cb) {
       switch(props.method) {
-        case 'eth_accounts': return true
-        case 'net_version': return true
+        case 'eth_requestAccounts':
+        case 'eth_accounts':
+          return true
+        case 'net_version':
+        case 'eth_chainId':
+          return true
+        case 'personal_sign': {
+          return Promise.resolve('0xhehehehe')
+        }
+        case 'eth_sendTransaction': {
+          return Promise.reject(new Error('This service can not send transactions.'))
+        }
         default: console.log('resquesting missing method', props.method)
       }
     },
@@ -21,7 +31,10 @@ export const currentProvider = (selectedAddress, networkVersion) => {
           break;
         case 'net_version': cb(null, { result: [ this.networkVersion ]})
           break;
-        default: throw new(`Method '${props.method}' is not supported yet.`)
+        case 'personal_sign': {
+          console.log('personal_signpersonal_signpersonal_signpersonal_signpersonal_sign')
+        }
+        default: console.log(`Method '${props.method}' is not supported yet.`)
       }
     },
     on: function(props) {
