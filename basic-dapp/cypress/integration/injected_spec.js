@@ -3,7 +3,7 @@ import { currentProvider } from '../fixtures/MockProvider';
 describe('dappeteer', () => {
   beforeEach(() => {
     cy.on("window:before:load", (win) => {
-      win.ethereum = currentProvider('0x332c22e9c7F02e092b18C6cc4D9Bfd46d36Dd7D9', 30)
+      win.ethereum = currentProvider('0x332c22e9c7F02e092b18C6cc4D9Bfd46d36Dd7D9', 30, true)
     })
 
     cy.visit('/')
@@ -27,5 +27,10 @@ describe('dappeteer', () => {
     cy.get('#sendToInput').type('0x332c22e9c7F02e092b18C6cc4D9Bfd46d36Dd7D9')
     cy.get('button.send').click()
     cy.get('#sendTrancation .response').should('have.text', '[ERROR]: This service can not send transactions.')
+  })
+
+  it('signs out', () => {
+    cy.get('#logout').click()
+    cy.get('#login .response').should('have.text', 'Logged Out')
   })
 })

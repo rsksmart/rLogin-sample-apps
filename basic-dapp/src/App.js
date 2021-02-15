@@ -122,9 +122,9 @@ function App() {
     setRLoginResponse(null)
     setAccount(null)
     setChainId(null)
-    setConnectResponse(null)
     setSignDataResponse(null)
     setSendResponse(null)
+    setConnectResponse('Logged Out')
   }
 
   return (
@@ -137,7 +137,7 @@ function App() {
         <h2>Start here</h2>
         <p>
           <RLoginButton onClick={handleLogin} disabled={rLoginResponse}>Connect with rLogin</RLoginButton>
-          <button onClick={() => handleLogOut(rLoginResponse)} disabled={!rLoginResponse}>Logout</button>
+          <button id="logout" onClick={() => handleLogOut(rLoginResponse)} disabled={!rLoginResponse}>Logout</button>
         </p>
         <div className="response">{connectResponse}</div>
       </section>

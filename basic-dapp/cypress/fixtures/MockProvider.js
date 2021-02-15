@@ -1,5 +1,7 @@
-export const currentProvider = (selectedAddress, networkVersion) => {
+export const currentProvider = (selectedAddress, networkVersion, debug = false) => {
   
+  const log = (...args) => debug && console.log('🦄', ...args)
+
   const provider = {
     isMetaMask: true,
     networkVersion,
@@ -20,7 +22,7 @@ export const currentProvider = (selectedAddress, networkVersion) => {
         case 'eth_sendTransaction': {
           return Promise.reject(new Error('This service can not send transactions.'))
         }
-        default: console.log('resquesting missing method', props.method)
+        default: log(`resquesting missing method ${props.method}`)
       }
     },
 
@@ -31,20 +33,17 @@ export const currentProvider = (selectedAddress, networkVersion) => {
           break;
         case 'net_version': cb(null, { result: [ this.networkVersion ]})
           break;
-        case 'personal_sign': {
-          console.log('personal_signpersonal_signpersonal_signpersonal_signpersonal_sign')
-        }
-        default: console.log(`Method '${props.method}' is not supported yet.`)
+        default: log(`Method '${props.method}' is not supported yet.`)
       }
     },
     on: function(props) {
-      console.log('registering event:', props)
+      log('registering event:', props)
     },
-    rpcRequest: function(props) {
-      console.log('rpcRequest', props)
+    removeAllListeners: function() {
+      log('removeAllListeners', null)
     }
   }
 
-  console.log('🦄 Provider ', provider)
+  debug && log('Provider ', provider)
   return provider;
 }
