@@ -146,8 +146,8 @@ function App() {
           <section id="usersInfo">
             <h2>Wallet:</h2>
             <ul>
-              {account && <li><strong>Address: </strong>{account}</li>}
-              {chainId && <li><strong>ChainId: </strong>{chainId}</li>}
+              {account && <li className="address"><strong>Address: </strong>{account}</li>}
+              {chainId && <li className="chainId"><strong>ChainId: </strong>{chainId}</li>}
             </ul>
           </section>
           
