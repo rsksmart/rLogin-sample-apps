@@ -1,9 +1,16 @@
 import { currentProvider } from '../fixtures/MockProvider';
 
 describe('dappeteer', () => {
+  const address = '0xB98bD7C7f656290071E52D1aA617D9cB4467Fd6D';
+
   beforeEach(() => {
     cy.on("window:before:load", (win) => {
-      win.ethereum = currentProvider('0x332c22e9c7F02e092b18C6cc4D9Bfd46d36Dd7D9', 30, true)
+      win.ethereum = currentProvider(
+        address,
+        'de926db3012af759b4f24b5a51ef6afa397f04670f634aa4f48d4480417007f3',
+        31,
+        true
+      )
     })
 
     cy.visit('/')
@@ -14,8 +21,8 @@ describe('dappeteer', () => {
   it('shows MetaMask with address and chainId', () => {
     cy.get('.response').should('have.text', 'Connected')
 
-    cy.get('li.address').should('have.text', 'Address: 0x332c22e9c7F02e092b18C6cc4D9Bfd46d36Dd7D9')
-    cy.get('li.chainId').should('have.text', 'ChainId: 30')
+    cy.get('li.address').should('have.text', `Address: ${address}`)
+    cy.get('li.chainId').should('have.text', 'ChainId: 31')
   })
 
   it('signs messages', () => {
@@ -24,7 +31,7 @@ describe('dappeteer', () => {
   })
 
   it('trys to send a transaction', () => {
-    cy.get('#sendToInput').type('0x332c22e9c7F02e092b18C6cc4D9Bfd46d36Dd7D9')
+    cy.get('#sendToInput').type(address)
     cy.get('button.send').click()
     cy.get('#sendTrancation .response').should('have.text', '[ERROR]: This service can not send transactions.')
   })

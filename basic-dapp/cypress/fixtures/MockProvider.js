@@ -1,9 +1,6 @@
 import { personalSign } from 'eth-sig-util'
 
-export const currentProvider = (selectedAddress, networkVersion, debug = false) => {
-  // temp private key
-  const privateKey = 'de926db3012af759b4f24b5a51ef6afa397f04670f634aa4f48d4480417007f3';
-  
+export const currentProvider = (selectedAddress, privateKey, networkVersion, debug = false) => {
   /* Logging */
   const log = (...args) => debug && console.log('🦄', ...args)
 
