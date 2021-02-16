@@ -35,3 +35,7 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn cypress`
+
+This repo uses cypress for e2e testing with a mock provider located here `/cypress/fixtures/MockProvider.js`. This provider will be extracted out at a later time as a stand alone tester.
