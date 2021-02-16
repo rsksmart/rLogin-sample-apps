@@ -1,5 +1,4 @@
-// import { currentProvider } from '../fixtures/MockProvider';
-import currentProvider from 'mock-web3-provider'
+import currentProvider from 'jesse-mock-web3-provider'
 
 describe('dappeteer', () => {
   const address = '0xB98bD7C7f656290071E52D1aA617D9cB4467Fd6D';

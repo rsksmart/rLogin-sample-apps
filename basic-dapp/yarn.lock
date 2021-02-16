@@ -5877,7 +5877,7 @@ eth-sig-util@^1.4.2:
     ethereumjs-abi "git+https://github.com/ethereumjs/ethereumjs-abi.git"
     ethereumjs-util "^5.1.1"
 
-eth-sig-util@^3.0.0:
+eth-sig-util@^3.0.0, eth-sig-util@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/eth-sig-util/-/eth-sig-util-3.0.1.tgz#8753297c83a3f58346bd13547b59c4b2cd110c96"
   integrity sha512-0Us50HiGGvZgjtWTyAI/+qTzYPMLy5Q451D0Xy68bxq1QMWdoOddDwGvsqcFT27uohKgalM9z/yxplyt+mY2iQ==
@@ -7899,6 +7899,13 @@ istanbul-reports@^3.0.2:
   dependencies:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
+
+jesse-mock-web3-provider@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/jesse-mock-web3-provider/-/jesse-mock-web3-provider-0.0.1.tgz#06f2abbb4a32999ef844038cead6ca63f1371b66"
+  integrity sha512-xnJZcoZAI2YNf8APa/qMdp3X49/M9T11OAUgcRNJWHAQChokw76JiqP8ezF/JxtjMvEpmtSMtLtMDOvvHiOqXA==
+  dependencies:
+    eth-sig-util "^3.0.1"
 
 jest-changed-files@^26.6.2:
   version "26.6.2"
