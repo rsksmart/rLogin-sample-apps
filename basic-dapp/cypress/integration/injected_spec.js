@@ -1,16 +1,18 @@
-import { currentProvider } from '../fixtures/MockProvider';
+// import { currentProvider } from '../fixtures/MockProvider';
+import currentProvider from 'mock-web3-provider'
 
 describe('dappeteer', () => {
   const address = '0xB98bD7C7f656290071E52D1aA617D9cB4467Fd6D';
+  const privateKey = 'de926db3012af759b4f24b5a51ef6afa397f04670f634aa4f48d4480417007f3'
 
   beforeEach(() => {
     cy.on("window:before:load", (win) => {
-      win.ethereum = currentProvider(
+      win.ethereum = currentProvider({
         address,
-        'de926db3012af759b4f24b5a51ef6afa397f04670f634aa4f48d4480417007f3',
-        31,
-        true
-      )
+        privateKey,
+        chainId: 31,
+        debug: true
+      })
     })
 
     cy.visit('/')
