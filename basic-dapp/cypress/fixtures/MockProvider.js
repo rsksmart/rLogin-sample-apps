@@ -1,5 +1,10 @@
+import { personalSign } from 'eth-sig-util'
+
 export const currentProvider = (selectedAddress, networkVersion, debug = false) => {
+  // temp private key
+  const privateKey = 'de926db3012af759b4f24b5a51ef6afa397f04670f634aa4f48d4480417007f3';
   
+  /* Logging */
   const log = (...args) => debug && console.log('🦄', ...args)
 
   const provider = {
@@ -9,6 +14,7 @@ export const currentProvider = (selectedAddress, networkVersion, debug = false) 
     selectedAddress,
 
     request: function(props, cb) {
+      log(`request[${props.method}]`)
       switch(props.method) {
         case 'eth_requestAccounts':
         case 'eth_accounts':
@@ -17,7 +23,10 @@ export const currentProvider = (selectedAddress, networkVersion, debug = false) 
         case 'eth_chainId':
           return true
         case 'personal_sign': {
-          return Promise.resolve('0xhehehehe')
+          const privKey = Buffer.from(privateKey, 'hex');
+          const signed = personalSign(privKey, { data: props.params[0] })
+          log('signed', signed)
+          return Promise.resolve(signed)
         }
         case 'eth_sendTransaction': {
           return Promise.reject(new Error('This service can not send transactions.'))
