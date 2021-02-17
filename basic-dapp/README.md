@@ -38,4 +38,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `yarn cypress`
 
-This repo uses cypress for e2e testing with a mock provider located here `/cypress/fixtures/MockProvider.js`. This provider will be extracted out at a later time as a stand alone tester.
+This repo uses cypress for e2e testing with a mock provider located here `/cypress/fixtures/MockProvider.js`. To run the test suite, first start an instance of the sample app at localhost:3000 with `yarn start`. Then in a different window, run `yarn cypress`.

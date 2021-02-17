@@ -41,6 +41,8 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^6.5.0"
+    "cypress": "^6.5.0",
+    "eslint-plugin-cypress": "^2.11.2",
+    "jesse-mock-web3-provider": "^0.0.1"
   }
 }
