@@ -1,4 +1,3 @@
-import { ECANCELED } from 'constants';
 import currentProvider from 'jesse-mock-web3-provider'
 
 describe('permissioned e2e testing', () => {
@@ -21,12 +20,23 @@ describe('permissioned e2e testing', () => {
     cy.contains('Login with rLogin').click()
     cy.contains('MetaMask').click()
 
-    cy.wait(10000)
-    // cy.pause()
+    // rLogin makes 3 post requests to this URL, we will wait but not mock as they need to increment.
+    cy.intercept('POST', 'https://did.rsk.co:4444/').as('didRsk')
+    cy.wait('@didRsk')
+
+    // mock response from the app
+    cy.intercept('GET', 'http(.+)request-signup(.+)', { fixture: 'request-signup.json' }).as('requestSignup')  
+
     cy.get('.rlogin-header2').should('have.text', 'Would you like to give usaccess to info in your data vault?')
     cy.contains('Access Data Vault').click()
 
-    cy.wait(10000)
+    // mock response exchange to and from the Data Vault
+    cy.intercept('GET', 'http(.+)request-auth(.+)', { fixture: 'request-auth.json' }).as('requestAuth')
+    cy.intercept('GET', 'http(.+)auth', { fixture: 'auth.json'}).as('auth')
+    cy.intercept('GET', 'http(.+)/content/EmailVerifiableCredential', { fixture: 'content-email.json' }).as('emailCred')
+    cy.intercept('GET', 'http(.+)/content/DD_NAME', { fixture: 'content-name.json'} ).as('name')
+  
+    // continue with the content
     cy.get('.rlogin-header2').should('have.text', 'Select information to share')
     cy.get('label').eq(0).should('have.text', 'CI Testing').click()
     cy.get('label').eq(1).should('have.text', 'Email address: jesse@iovlabs.org (Verifiable Credential)').click()
