@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { mount } from 'enzyme'
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Start here/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe('Component: App', () => {
+  test('renders component and has header', () => {
+    const component = mount(<App />)
+    expect(component).toBeDefined()
+    expect(component.find('.App-header').text()).toBe('rLogin Sample App - Basic dApp')
+  })
+})

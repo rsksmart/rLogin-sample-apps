@@ -68,7 +68,10 @@ function App() {
         // finally, set the provider in local state to be used for signing and sending transactions
         setRLoginResponse(response)
       })
-      .catch(err => err.message && setConnectResponse(`[ERROR]: ${err.message}`))
+      // catch an error and if there is a message display it. Closing WalletConnect without a
+      // connection will throw an error with no response, which is why we check:
+      .catch(error => console.log('the error:', error))
+      // .catch(err => err && err.message && setConnectResponse(`[ERROR]: ${err.message}`))
   }
 
   // Nifty Wallet handles requests to the provider differently than MetaMask & WalletConnect
@@ -119,9 +122,9 @@ function App() {
     setRLoginResponse(null)
     setAccount(null)
     setChainId(null)
-    setConnectResponse(null)
     setSignDataResponse(null)
     setSendResponse(null)
+    setConnectResponse('Logged Out')
   }
 
   return (
@@ -134,7 +137,7 @@ function App() {
         <h2>Start here</h2>
         <p>
           <RLoginButton onClick={handleLogin} disabled={rLoginResponse}>Connect with rLogin</RLoginButton>
-          <button onClick={() => handleLogOut(rLoginResponse)} disabled={!rLoginResponse}>Logout</button>
+          <button id="logout" onClick={() => handleLogOut(rLoginResponse)} disabled={!rLoginResponse}>Logout</button>
         </p>
         <div className="response">{connectResponse}</div>
       </section>
@@ -144,8 +147,8 @@ function App() {
           <section id="usersInfo">
             <h2>Wallet:</h2>
             <ul>
-              {account && <li><strong>Address: </strong>{account}</li>}
-              {chainId && <li><strong>ChainId: </strong>{chainId}</li>}
+              {account && <li className="address"><strong>Address: </strong>{account}</li>}
+              {chainId && <li className="chainId"><strong>ChainId: </strong>{chainId}</li>}
             </ul>
           </section>
           
@@ -154,7 +157,7 @@ function App() {
             <p>
               <label htmlFor="dataInput">Value: </label>
               <input name="dataInput" type="text" value={signDataInput} onChange={evt => setSignDataInput(evt.target.value)} />
-              <button onClick={() => handleSignData(signDataInput)}>Sign Data</button>
+              <button className="sign" onClick={() => handleSignData(signDataInput)}>Sign Data</button>
             </p>
             
             <p>Signed Data Response:</p>
@@ -164,16 +167,16 @@ function App() {
           <section id="sendTrancation">
             <h2>Send Transaction</h2>
             <p>
-              <label htmlFor="sendTo">Send to: </label>
-              <input name="sendToInput" type="text" value={sendToInput} onChange={evt => setSendToInput(evt.target.value)} />
+              <label htmlFor="sendToInput">Send to: </label>
+              <input id="sendToInput" name="sendToInput" type="text" value={sendToInput} onChange={evt => setSendToInput(evt.target.value)} />
             </p>
             <p>
               <label htmlFor="sendAmount">Amount: </label>
               <input name="sendAmount" type="number" value={sendAmount} onChange={evt => setSendAmount(evt.target.value)} />
             </p>
-            <p><button onClick={() => handleSendTransaction(sendToInput, sendAmount)}>Send Transaction</button></p>
+            <p><button className="send" onClick={() => handleSendTransaction(sendToInput, sendAmount)}>Send Transaction</button></p>
             <p>Send Response:</p>
-            <div className="sendResponse">{sendResponse}</div>
+            <div className="response">{sendResponse}</div>
           </section>
         </div>
       )}
