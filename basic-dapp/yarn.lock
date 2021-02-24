@@ -1664,6 +1664,13 @@
     did-jwt "^4.6.2"
     eth-sig-util "^3.0.0"
 
+"@rsksmart/mock-web3-provider@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@rsksmart/mock-web3-provider/-/mock-web3-provider-0.0.1.tgz#00863c7714d24cdbc8ca3cebdd7f1c4f67e8e49e"
+  integrity sha512-g3LELBA1rTzemuWKkvFswHrO8AspM9K0xg/sPJXmS2da67MfnG0WRhzx5BQf5Vl1H3oBXZrpICBGPtz5WsNdhA==
+  dependencies:
+    eth-sig-util "^3.0.1"
+
 "@rsksmart/rlogin@^1.0.0-beta.1":
   version "1.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.0.0-beta.1.tgz#49ce76bdd1124be3be94472f4f47950d5fbbdb2b"
@@ -7899,13 +7906,6 @@ istanbul-reports@^3.0.2:
   dependencies:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
-
-jesse-mock-web3-provider@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/jesse-mock-web3-provider/-/jesse-mock-web3-provider-0.0.1.tgz#06f2abbb4a32999ef844038cead6ca63f1371b66"
-  integrity sha512-xnJZcoZAI2YNf8APa/qMdp3X49/M9T11OAUgcRNJWHAQChokw76JiqP8ezF/JxtjMvEpmtSMtLtMDOvvHiOqXA==
-  dependencies:
-    eth-sig-util "^3.0.1"
 
 jest-changed-files@^26.6.2:
   version "26.6.2"
