@@ -44,6 +44,6 @@
     "cypress": "^6.4.0",
     "enzyme": "^3.11.0",
     "eslint-plugin-cypress": "^2.11.2",
-    "jesse-mock-web3-provider": "^0.0.1"
+    "@rsksmart/mock-web3-provider": "^0.0.1"
   }
 }
