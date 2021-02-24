@@ -1,4 +1,4 @@
-import currentProvider from 'jesse-mock-web3-provider'
+import currentProvider from '@rsksmart/mock-web3-provider'
 
 describe('permissioned e2e testing', () => {
   const address = '0xB98bD7C7f656290071E52D1aA617D9cB4467Fd6D';
