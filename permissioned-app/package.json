@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install && yarn --cwd ./frontend-app",
+    "setup": "yarn && yarn --cwd ./frontend-app",
     "start": "concurrently \"node backend/index.js\" \"yarn --cwd ./frontend-app start\"",
     "start:backend": "node backend/index.js",
     "start:frontend": "yarn --cwd ./frontend-app start",
