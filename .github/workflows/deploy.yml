@@ -1,0 +1,67 @@
+name: rLogin front-ends for basic and permissioned dapp deploy to prod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy_basic_dapp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+
+      - name: Install dependencies
+        run: |
+          cd basic-dapp
+          yarn
+          yarn build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.MAIN_BASIC_DAPP_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.MAIN_BASIC_DAPP_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.MAIN_BASIC_DAPP_AWS_REGION }}
+
+      - name: Deploy site to S3
+        run: |
+          cd basic-dapp
+          aws s3 sync --delete --only-show-errors build/ ${{ secrets.MAIN_BASIC_DAPP_S3_BUCKET }}
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.MAIN_BASIC_DAPP_CLOUDFRONT_DISTRIBUTION }} --paths "/*"
+
+  build-and-deploy_permissioned_dapp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+
+      - name: Install dependencies
+        run: |
+          cd permissioned-app/frontend-app/
+          yarn
+          yarn build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.MAIN_PERMISSIONED_DAPP_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.MAIN_PERMISSIONED_DAPP_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.MAIN_PERMISSIONED_DAPP_AWS_REGION }}
+
+      - name: Deploy site to S3
+        run: |
+          cd permissioned-app/frontend-app/
+          aws s3 sync --delete --only-show-errors build/ ${{ secrets.MAIN_PERMISSIONED_DAPP_S3_BUCKET }}
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.MAIN_PERMISSIONED_DAPP_CLOUDFRONT_DISTRIBUTION }} --paths "/*"
