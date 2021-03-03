@@ -74,7 +74,7 @@ function App() {
       // .catch(err => err && err.message && setConnectResponse(`[ERROR]: ${err.message}`))
   }
 
-  // Nifty Wallet handles requests to the provider differently than MetaMask & WalletConnect
+  // Handle the requests to the provider
   const providerRPC = (provider, args) => provider.request(args)
 
   // Sign data
