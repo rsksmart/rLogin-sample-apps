@@ -75,10 +75,7 @@ function App() {
   }
 
   // Nifty Wallet handles requests to the provider differently than MetaMask & WalletConnect
-  const providerRPC = (provider, args) => 
-    provider.isNiftyWallet
-      ? provider.send(args.method, args.params)   // for Nifty Wallet
-      : provider.request(args)                    // for all others
+  const providerRPC = (provider, args) => provider.request(args)
 
   // Sign data
   const handleSignData = (value) => {
