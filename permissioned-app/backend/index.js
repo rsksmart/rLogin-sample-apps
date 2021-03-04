@@ -10,7 +10,7 @@ const privateKey = '72e7d4571572838d3e0fe7ab18ea84d183beaf3f92d6c8add8193b53c1a5
 const serviceDid = 'did:ethr:rsk:0x45eDF63532b4dD5ee131e0530e9FB12f7DA1915c'
 const serviceSigner = SimpleSigner(privateKey)
 const challengeSecret = 'secret-pass'
-const serviceUrl = 'http://localhost:3007'
+const serviceUrl = 'https://data-vault-sample-backend.rlogin.identity.rifos.org'
 
 const app = express()
 
