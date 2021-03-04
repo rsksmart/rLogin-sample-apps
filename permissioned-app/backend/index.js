@@ -17,6 +17,9 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
+app.get('/__health', (req, res) => {
+  res.status(200).end('OK')
+})
 
 // We expect to have a name and an email credential here. You could also 
 // check the DID matches a list or DIDs if this was signingIn.
