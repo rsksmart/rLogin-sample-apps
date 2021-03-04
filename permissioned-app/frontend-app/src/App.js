@@ -20,7 +20,7 @@ const rLogin = new RLogin({
     }
   },
   supportedChains: [30, 31],
-  backendUrl: 'http://localhost:3007'
+  backendUrl: 'https://data-vault-sample-backend.rlogin.identity.rifos.org'
 })
 
 const App = () => {
