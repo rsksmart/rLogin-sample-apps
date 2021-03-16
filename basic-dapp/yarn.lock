@@ -1693,10 +1693,10 @@
   dependencies:
     eth-sig-util "^3.0.1"
 
-"@rsksmart/rlogin@^1.0.0-beta.2":
-  version "1.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.0.0-beta.2.tgz#d7ae51d608770aa7e15d5eb91a870a68ff4a4f9b"
-  integrity sha512-l56JBPs9RZnFE2IOjhGhKpdRIGqYlerupBVAYw26CFkI/BvO2GEvxHsK+XTWbxId4Es6IxkfIoitSTqzFXbOhQ==
+"@rsksmart/rlogin@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.0.2.tgz#77f4ceca65908ff6c7a1224fcebcba35ab90af9b"
+  integrity sha512-NjEcMJyllYJjPLkhYJuotTf1DOf7jL1pzXFfxZ1i1cpgSeEaZcAY2RRxNUgjdSkOSB48sZcKSacjLbI0dpXGfA==
   dependencies:
     "@rsksmart/ipfs-cpinner-client" "0.1.1-beta.13"
     "@rsksmart/vc-json-schemas-parser" "^1.0.0"
