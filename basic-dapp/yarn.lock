@@ -1675,10 +1675,10 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@rsksmart/ipfs-cpinner-client@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@rsksmart/ipfs-cpinner-client/-/ipfs-cpinner-client-0.1.1.tgz#f67ad2420ca200e0de0c1eb1029c93e20760dcd7"
-  integrity sha512-XX/K7+pV10IumvYJWbI/bw6qVeFkWkPej2ipBw6k5NTDPZdgLpX5Uz2Jt9shQHbrR3JuenhXDLazwnaVoL4sow==
+"@rsksmart/ipfs-cpinner-client@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@rsksmart/ipfs-cpinner-client/-/ipfs-cpinner-client-0.1.2.tgz#bc4a5f3ef6dab78e7defa04f30f905187f698783"
+  integrity sha512-sopOcIRbSDEErNrbVFUUAwuV/fIOf4iBimtQL+S4FyI0TMJtmRFeUq9boCPvyjzPDziUiy0M/jqVKWvZYQ6gLw==
   dependencies:
     axios "^0.21.1"
     buffer "^6.0.3"
@@ -1693,12 +1693,12 @@
   dependencies:
     eth-sig-util "^3.0.1"
 
-"@rsksmart/rlogin@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.0.5.tgz#cdcc974fbf9a47b9c06d4d0a37ec7ddb9be6c27e"
-  integrity sha512-oB4VeZfmX1AaUNvEJHZHPiv0YuEATLjQeOD38+McKp3jj9iGjVzxPmc8OMbeD2BZS7okQOEAOMvfjEggoW1rjQ==
+"@rsksmart/rlogin@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.0.6.tgz#cba0ccd0200708eabac94f00f32a8ea7afbb9f01"
+  integrity sha512-MnVSEdSM62K1PtuPODxoiEaSH1xlIJro+cBkZqRtwdTOxXElGIu+pGT+j1Xr3DTDrtrdi2RU9tmc2fLLk7Ij8w==
   dependencies:
-    "@rsksmart/ipfs-cpinner-client" "0.1.1"
+    "@rsksmart/ipfs-cpinner-client" "0.1.2"
     "@rsksmart/vc-json-schemas-parser" "^1.0.0"
     "@types/styled-components" "^5.1.3"
     axios "^0.21.1"
