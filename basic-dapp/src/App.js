@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import RLogin, { RLoginButton } from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import Eth from 'ethjs-query'
+import Portis from '@portis/web3'
 import './App.css';
 
 // Create a new rLogin instance with your custom providerOptions outside of the 
@@ -15,6 +16,16 @@ const rLogin = new RLogin({
         rpc: {
           30: 'https://public-node.rsk.co',
           31: 'https://public-node.testnet.rsk.co',
+        }
+      }
+    },
+    portis: {
+      package: Portis,
+      options: {
+        id: "a1c8672b-7b1c-476b-b3d0-41c27d575920",
+        network: {
+          nodeUrl: 'https://public-node.testnet.rsk.co',
+          chainId: 31,
         }
       }
     }
