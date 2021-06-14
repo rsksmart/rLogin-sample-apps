@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import RLogin, { RLoginButton } from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
+import Portis from '@portis/web3'
 import Eth from 'ethjs-query'
 import './App.css';
 
@@ -15,6 +16,16 @@ const rLogin = new RLogin({
         rpc: {
           30: 'https://public-node.rsk.co',
           31: 'https://public-node.testnet.rsk.co',
+        }
+      }
+    },
+    portis: {
+      package: Portis,
+      options: {
+        id: "a0f421c6-844b-4064-85be-3983ee0d1e65",
+        network: {
+          nodeUrl: 'https://public-node.testnet.rsk.co',
+          chainId: 31,
         }
       }
     }

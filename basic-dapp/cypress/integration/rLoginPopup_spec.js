@@ -9,7 +9,7 @@ describe('rLoign Popup interaction', () => {
   })
 
   it('closes the popup when clicking outside of it', () => {
-    cy.get('body').click()
+    cy.get('body').click(10, 10)
     cy.get('.rlogin-modal-lightbox').should('be.not.visible')
   })
 
