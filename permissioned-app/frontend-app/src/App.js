@@ -3,6 +3,7 @@ import RLogin, { RLoginButton } from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import Portis from '@portis/web3'
 import Eth from 'ethjs-query'
+import * as RIFDataVault from '@rsksmart/ipfs-cpinner-client'
 import './App.css';
 
 // Create a new rLogin instance with your custom providerOptions outside of the 
@@ -31,7 +32,11 @@ const rLogin = new RLogin({
     }
   },
   supportedChains: [30, 31],
-  backendUrl: 'https://data-vault-sample-backend.rlogin.identity.rifos.org'
+  backendUrl: 'https://data-vault-sample-backend.rlogin.identity.rifos.org',
+  dataVaultOptions: {
+    package: RIFDataVault,
+    serviceUrl: 'https://data-vault.identity.rifos.org',
+  }
 })
 
 const App = () => {
