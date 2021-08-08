@@ -35,10 +35,7 @@ const rLogin = new RLogin({
   backendUrl: 'https://data-vault-sample-backend.rlogin.identity.rifos.org',
   dataVaultOptions: {
     package: RIFDataVault,
-    serviceUrl: {
-      30: 'https://data-vault.identity.rifos.org',
-      31: 'https://data-vault.identity.rifos.org',
-    }
+    serviceUrl: 'https://data-vault.identity.rifos.org',
   }
 })
 
