@@ -3,6 +3,8 @@ import RLogin, { RLoginButton } from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import Eth from 'ethjs-query'
 import Portis from '@portis/web3'
+import { trezorProviderOptions } from '@rsksmart/rlogin-trezor-provider'
+import { ledgerProviderOptions } from '@rsksmart/rlogin-ledger-provider'
 import './App.css';
 
 // Create a new rLogin instance with your custom providerOptions outside of the 
@@ -27,6 +29,22 @@ const rLogin = new RLogin({
           nodeUrl: 'https://public-node.testnet.rsk.co',
           chainId: 31,
         }
+      }
+    },
+    'custom-ledger': {
+       ...ledgerProviderOptions,
+       options: {
+         rpcUrl: 'https://public-node.testnet.rsk.co',
+         chainId: 31,
+         debug: true
+       }
+    },
+    'custom-trezor': {
+      ...trezorProviderOptions,
+      options: {
+        rpcUrl: 'https://public-node.testnet.rsk.co',
+        chainId: 31,
+        debug: true
       }
     }
   },

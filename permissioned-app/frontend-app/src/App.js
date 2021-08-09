@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import RLogin, { RLoginButton } from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import Portis from '@portis/web3'
+import { trezorProviderOptions } from '@rsksmart/rlogin-trezor-provider'
+import { ledgerProviderOptions } from '@rsksmart/rlogin-ledger-provider'
 import Eth from 'ethjs-query'
 import * as RIFDataVault from '@rsksmart/ipfs-cpinner-client'
 import './App.css';
@@ -29,6 +31,22 @@ const rLogin = new RLogin({
           chainId: 31,
         }
       }
+    },
+    'custom-ledger': {
+      ...ledgerProviderOptions,
+      options: {
+        rpcUrl: 'https://public-node.testnet.rsk.co',
+        chainId: 31,
+        debug: true
+      }
+   },
+   'custom-trezor': {
+     ...trezorProviderOptions,
+     options: {
+       rpcUrl: 'https://public-node.testnet.rsk.co',
+       chainId: 31,
+       debug: true
+     }
     }
   },
   supportedChains: [30, 31],
