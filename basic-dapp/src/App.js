@@ -42,6 +42,8 @@ const rLogin = new RLogin({
     'custom-trezor': {
       ...trezorProviderOptions,
       options: {
+        manifestEmail: 'info@iovlabs.org',
+        manifestAppUrl: 'https://basic-sample.rlogin.identity.rifos.org/',
         rpcUrl: 'https://public-node.testnet.rsk.co',
         chainId: 31,
         debug: true
