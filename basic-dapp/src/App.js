@@ -5,6 +5,7 @@ import Eth from 'ethjs-query'
 import Portis from '@portis/web3'
 import { trezorProviderOptions } from '@rsksmart/rlogin-trezor-provider'
 import { ledgerProviderOptions } from '@rsksmart/rlogin-ledger-provider'
+import { dcentProviderOptions } from '@rsksmart/rlogin-dcent-provider'
 import './App.css';
 
 // Create a new rLogin instance with your custom providerOptions outside of the 
@@ -48,6 +49,10 @@ const rLogin = new RLogin({
         chainId: 31,
         debug: true
       }
+    },
+    'custom-dcent': {
+      ...dcentProviderOptions,
+      options: {}
     }
   },
   supportedChains: [30, 31]
