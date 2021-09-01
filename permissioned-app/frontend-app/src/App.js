@@ -173,19 +173,19 @@ const App = () => {
             <button onClick={getDataVaultKeys} disabled={dataVaultContent.length !== 0}>Get DV keys</button>
             {dataVaultLoading && <p>Loading...</p>}
 
-            <table>
+            <table style={{tableLayout: "fixed"}}>
               <thead>
                 <tr>
-                  <td width="25%">Key</td>
-                  <td>Content</td>
-                  <td width="25%">Actions</td>
+                  <th width="25%">Key</th>
+                  <th width="60%">Content</th>
+                  <th width="15%">Actions</th>
                 </tr>
               </thead>
               {dataVaultContent && dataVaultContent.map(dataVaultItem => (
                 <tr key={dataVaultItem.key}>
-                  <td>{dataVaultItem.key}</td>
+                  <td style={{overflowWrap: "break-word"}}>{dataVaultItem.key}</td>
                   <td>
-                    {dataVaultItem.content.map(content => <p key={content.content}>{content.content}</p>)}
+                    {dataVaultItem.content.map(content => <p style={{overflowWrap: "break-word"}} key={content.content}>{content.content}</p>)}
                   </td>
                   <td>
                     {dataVaultItem.content.length === 0 && (
