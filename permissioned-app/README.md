@@ -8,7 +8,7 @@
 
 This application asks the user for a Name declarative detail and an Email Credential from their DataVault before signing in. After signing in, the DataVault is available and the user can read data. 
 
-To get the email credential, use the [Email VC Issuer](https://rsksmart.github.io/email-vc-issuer/). To set your name, log on to the [RIF Identity Manager](https://rsksmart.github.io/rif-identity-manager/), click on the pencil icon at the top and set the "Name" field.
+To get the email credential, use the [Email VC Issuer](https://email-verifier.identity.rifos.org/). To set your name, log on to the [RIF Identity Manager](https://identity.rifos.org/), click on the pencil icon at the top and set the "Name" field.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and adds the following dependecies to implement rLogin and WalletConnect
 
