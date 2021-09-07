@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import RLogin, { RLoginButton } from '@rsksmart/rlogin'
+import RLogin from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import Eth from 'ethjs-query'
 import Portis from '@portis/web3'
@@ -164,7 +164,7 @@ function App() {
       <section id="login">
         <h2>Start here</h2>
         <p>
-          <RLoginButton onClick={handleLogin} disabled={rLoginResponse}>Connect with rLogin</RLoginButton>
+          <button onClick={handleLogin} disabled={rLoginResponse}>Connect with rLogin</button>
           <button id="logout" onClick={() => handleLogOut(rLoginResponse)} disabled={!rLoginResponse}>Logout</button>
         </p>
         <div className="response">{connectResponse}</div>

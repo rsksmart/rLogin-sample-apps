@@ -1983,10 +1983,20 @@
     bignumber.js "^9.0.1"
     ethers "^5.4.3"
 
-"@ledgerhq/hw-transport-webusb@^6.2.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@ledgerhq/hw-transport-webusb/-/hw-transport-webusb-6.3.0.tgz#6cf4f89190e520aeefcf99349806eac136d6f3f1"
-  integrity sha512-zDwQ6JZOvZYdxxPvwqbG21A4JWEV5XGmhwBIGA/DmZ50mdZ/Tq4q+Eo9GJxoU3+j0UHidKhfmPzbnJfOjfYADQ==
+"@ledgerhq/hw-transport-webhid@^6.4.1":
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/@ledgerhq/hw-transport-webhid/-/hw-transport-webhid-6.4.1.tgz#81f0939c95154b47e00c7e95d6ccdfdbd3f883bc"
+  integrity sha512-usMuN/WpbReNk7/bKCCM9MKuqM2DlidJbgMFUqXpa1VAlDPI0M7lVhcutXTzILzgDNySMb0HLmRkio8zRXgRZg==
+  dependencies:
+    "@ledgerhq/devices" "^6.3.0"
+    "@ledgerhq/errors" "^6.2.0"
+    "@ledgerhq/hw-transport" "^6.3.0"
+    "@ledgerhq/logs" "^6.2.0"
+
+"@ledgerhq/hw-transport-webusb@^6.3.0":
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/@ledgerhq/hw-transport-webusb/-/hw-transport-webusb-6.6.0.tgz#9be0d9f32ccee27f754bc50b35d9a703ebcc4d36"
+  integrity sha512-ovY2IzbmAFsVgym7ftLU4c36Me5DHuM41rdI7XipMRd1COvnYNiutqAMym2RLk5IS2LRPAqTWiWgt86Oy6DGvQ==
   dependencies:
     "@ledgerhq/devices" "^6.3.0"
     "@ledgerhq/errors" "^6.2.0"
@@ -2126,10 +2136,10 @@
     ethjs-query "^0.3.8"
     stream-browserify "^3.0.0"
 
-"@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.0-beta.3":
-  version "1.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-eip1193-proxy-subprovider/-/rlogin-eip1193-proxy-subprovider-1.0.0-beta.3.tgz#c34275c542a9b7a7607cdf307cdbd6f4ce669fd0"
-  integrity sha512-Um++3ZnQBGSNXDBwsQBN92yxQnzCFEvhmZj2Y2CdwWuSTUVxX9SuH0P0wS/Kjyz4yAT1+WCQSvGLUUrTmyKbeQ==
+"@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.0-beta.5":
+  version "1.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-eip1193-proxy-subprovider/-/rlogin-eip1193-proxy-subprovider-1.0.0-beta.5.tgz#0bfb96189386537630596f223643de36803f021a"
+  integrity sha512-4jeAEF8jEjwmgie4S4OwXmGWBlPHLieuZ5VMn5b1DJPHWpF5VHJjpmeXsHGMwbxhXhKkX03khI5mzfDqcyLyPQ==
   dependencies:
     "@ethereumjs/tx" "^3.3.0"
     assert "^2.0.0"
@@ -2139,15 +2149,16 @@
     ethjs-query "^0.3.8"
     stream-browserify "^3.0.0"
 
-"@rsksmart/rlogin-ledger-provider@^1.0.0-beta.3":
-  version "1.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-ledger-provider/-/rlogin-ledger-provider-1.0.0-beta.3.tgz#7e32bf882f92b8a7fc0978614515206d7e2e916f"
-  integrity sha512-OHk3h3xfeuEXvCq0K2ugbGWx8ZAb/dj89pRAAAQe2QtSCLyDjWNqOsjdRIEBu/c9voDh2JewfZbwBmOC2PJgHw==
+"@rsksmart/rlogin-ledger-provider@^1.0.0-beta.6":
+  version "1.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-ledger-provider/-/rlogin-ledger-provider-1.0.0-beta.6.tgz#1e9c23d26702350a651eaa3cb9a2bc818192d1f6"
+  integrity sha512-rfFpn27d0PCWv4Y4iqlNwdWA33rDDD4T/inTbBTT9fBiDpayimf+Y85MOZlzITfOknh02ROIyW4WF1g3eL6PHA==
   dependencies:
     "@ethereumjs/tx" "^3.3.0"
     "@ledgerhq/hw-app-eth" "^6.2.0"
-    "@ledgerhq/hw-transport-webusb" "^6.2.0"
-    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.0-beta.3"
+    "@ledgerhq/hw-transport-webhid" "^6.4.1"
+    "@ledgerhq/hw-transport-webusb" "^6.3.0"
+    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.0-beta.5"
     assert "^2.0.0"
     bn.js "^5.2.0"
     buffer "^6.0.3"
@@ -2166,10 +2177,10 @@
     stream-browserify "^3.0.0"
     trezor-connect "^8.1.29"
 
-"@rsksmart/rlogin@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.1.1.tgz#719e3c7af7e88d774aedd403a9664abdf260658f"
-  integrity sha512-6nWr/SWLE5dCj36clMWqcqU1oky9OFW6hWOv62ZyhZ+FiW+/RL+GCyuXgLZHW+urRUgtoCCRTx+EeqMN4xAzbw==
+"@rsksmart/rlogin@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.1.3.tgz#8ed3e3c2a94c116b39ab9bd6be3060f2b850d3ef"
+  integrity sha512-14rrSRTfGwTP3S8BtwBdwxKJoWeMw996bM8ZBs5IjGJ3MRgx4+fWcUnjY3Hl6xLOwNfnd7Gu965f59uyJtpiJw==
   dependencies:
     "@rsksmart/ipfs-cpinner-client-types" "^0.1.3"
     "@rsksmart/vc-json-schemas-parser" "^1.0.0"
