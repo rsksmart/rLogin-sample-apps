@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import RLogin, { RLoginButton } from '@rsksmart/rlogin'
+import RLogin from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import Portis from '@portis/web3'
 import { trezorProviderOptions } from '@rsksmart/rlogin-trezor-provider'
@@ -151,7 +151,7 @@ const App = () => {
       <section id="connect">
         <h2>Start here!</h2>
         <p>This service requires a declarative detail "NAME" and an Email credential saved into your datavault. To get the email credential, use the <a href="https://email-verifier.identity.rifos.org/" target="_blank" rel="noreferrer">Email VC Issuer</a>. To set your name, log on to the <a href="https://identity.rifos.org/" target="_blank" rel="noreferrer">RIF Identity Manager</a>, click on the pencil icon at the top and set the "Name" field.</p>
-        <RLoginButton onClick={handleLogin} disabled={rLoginResponse}>Login with rLogin</RLoginButton>
+        <button onClick={handleLogin} disabled={rLoginResponse}>Login with rLogin</button>
         <button onClick={() => handleLogOut(rLoginResponse)} disabled={!rLoginResponse}>Logout</button>
         <div className="response">
           {rLoginResponse && <>Connected</>}
