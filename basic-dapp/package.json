@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@portis/web3": "^4.0.0",
-    "@rsksmart/rlogin": "^1.1.1",
-    "@rsksmart/rlogin-ledger-provider": "^1.0.0-beta.3",
+    "@rsksmart/rlogin": "^1.1.3",
+    "@rsksmart/rlogin-ledger-provider": "^1.0.0-beta.6",
     "@rsksmart/rlogin-trezor-provider": "^1.0.0-beta.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
