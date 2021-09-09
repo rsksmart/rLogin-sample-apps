@@ -5,6 +5,8 @@ import Eth from 'ethjs-query'
 import Portis from '@portis/web3'
 import { trezorProviderOptions } from '@rsksmart/rlogin-trezor-provider'
 import { ledgerProviderOptions } from '@rsksmart/rlogin-ledger-provider'
+import Torus from "@toruslabs/torus-embed";
+
 import './App.css';
 
 // Create a new rLogin instance with your custom providerOptions outside of the 
@@ -48,6 +50,20 @@ const rLogin = new RLogin({
         chainId: 31,
         debug: true
       }
+    },
+    torus: {
+      package: Torus, // required
+      options: {
+        networkParams: {
+          host: "https://public-node.testnet.rsk.co", // optional
+          chainId: 31, // optional
+          networkId: 31, // optional
+          blockExplorer: "https://explorer.testnet.rsk.co/",
+          ticker: 'rBTC',
+          tickerName: 'rBTC',
+          networkName: "RSK - Testnet",
+        }
+      }
     }
   },
   supportedChains: [30, 31]
@@ -76,6 +92,7 @@ function App() {
       .then(response => {
         // set a local variable for the response:
         const provider = response.provider
+        console.log(provider)
 
         setConnectResponse('Connected')
 
