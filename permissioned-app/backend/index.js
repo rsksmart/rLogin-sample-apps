@@ -26,8 +26,11 @@ app.get('/__health', (req, res) => {
 const signupBusinessLogic = (payload) => {
   console.log(payload);
 
+  if (!payload.sd.credentials.Email) { throw new Error('The Email is required.') }
+  if (!payload.sd.claims.Name) { throw new Error('The Name is required.') }
+
   // return true is an email credential and name declarative detail is provided
-  return (payload.sd.credentials.Email && payload.sd.claims.Name)
+  return true
 }
 
 const authMiddleware = didAuth.default({
