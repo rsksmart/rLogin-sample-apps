@@ -153,6 +153,7 @@ const App = () => {
         <p>This service requires a declarative detail "NAME" and an Email credential saved into your datavault. To get the email credential, use the <a href="https://email-verifier.identity.rifos.org/" target="_blank" rel="noreferrer">Email VC Issuer</a>. To set your name, log on to the <a href="https://identity.rifos.org/" target="_blank" rel="noreferrer">RIF Identity Manager</a>, click on the pencil icon at the top and set the "Name" field.</p>
         <button onClick={handleLogin} disabled={rLoginResponse}>Login with rLogin</button>
         <button onClick={() => handleLogOut(rLoginResponse)} disabled={!rLoginResponse}>Logout</button>
+        <button onClick={() => { localStorage.removeItem('WEB3_CONNECT_CACHED_PROVIDER'); location.reload() }}>Start over</button>
         <div className="response">
           {rLoginResponse && <>Connected</>}
         </div>

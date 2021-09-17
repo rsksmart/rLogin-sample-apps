@@ -175,6 +175,7 @@ function App() {
         <p>
           <button onClick={handleLogin} disabled={rLoginResponse}>Connect with rLogin</button>
           <button id="logout" onClick={() => handleLogOut(rLoginResponse)} disabled={!rLoginResponse}>Logout</button>
+          <button onClick={() => { localStorage.removeItem('WEB3_CONNECT_CACHED_PROVIDER'); location.reload() }}>Start over</button>
         </p>
         <div className="response">{connectResponse}</div>
       </section>
