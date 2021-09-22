@@ -5,14 +5,11 @@
   "dependencies": {
     "@portis/web3": "^4.0.0",
     "@rsksmart/ipfs-cpinner-client": "^0.1.3",
-    "@rsksmart/rlogin": "^1.2.0-beta.2",
-    "@rsksmart/rlogin-dcent-provider": "^1.0.0-beta.7",
-    "@rsksmart/rlogin-ledger-provider": "^1.0.0-beta.7",
-    "@rsksmart/rlogin-trezor-provider": "^1.0.0-beta.7",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@walletconnect/web3-provider": "^1.3.5",
+    "@rsksmart/rlogin": "^1.2.0-beta.3",
+    "@rsksmart/rlogin-dcent-provider": "^1.0.0-beta.8",
+    "@rsksmart/rlogin-ledger-provider": "^1.0.0-beta.8",
+    "@rsksmart/rlogin-trezor-provider": "^1.0.0-beta.9",
+    "@walletconnect/web3-provider": "^1.6.5",
     "ethjs-query": "^0.3.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -47,6 +44,9 @@
   },
   "devDependencies": {
     "@rsksmart/mock-web3-provider": "^0.0.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "cypress": "^6.5.0",
     "eslint-plugin-cypress": "^2.11.2"
   }
