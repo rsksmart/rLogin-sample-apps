@@ -2088,13 +2088,13 @@
   dependencies:
     eth-sig-util "^3.0.1"
 
-"@rsksmart/rlogin-dcent-provider@^1.0.0-beta.7":
-  version "1.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dcent-provider/-/rlogin-dcent-provider-1.0.0-beta.7.tgz#bd543fd9f5f7c84a6fabb150259d820f02f6e386"
-  integrity sha512-GQFYKyy4AL1eKECBN0CRbCcjjQTcHY9s5VgysglkkgonhDuC/cadlN3saGyM30QNe7e4BkCcQWvJtUbW/jBHsg==
+"@rsksmart/rlogin-dcent-provider@^1.0.0-beta.8":
+  version "1.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dcent-provider/-/rlogin-dcent-provider-1.0.0-beta.8.tgz#9e7be78ecff70716c18007abf2b277dc5e27b20a"
+  integrity sha512-pLr5zm6wy/IXUM/lqTw6bpCKVWfTt6zssMH+/HtOmBlNp7MLDMw9S/Srum1JESsCSr8rbwQsOGuCewoWGx7pdA==
   dependencies:
     "@rsksmart/rlogin-dpath" "^1.0.0-beta.7"
-    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.0-beta.7"
+    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.0-beta.8"
     "@rsksmart/rlogin-transactions" "^1.0.0-beta.7"
     assert "^2.0.0"
     buffer "^6.0.3"
@@ -2108,26 +2108,26 @@
   resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dpath/-/rlogin-dpath-1.0.0-beta.7.tgz#4f199dbd91e6b608e0968a5e6475bd5bd7e80c75"
   integrity sha512-184urV7VOZ/k80KGCfOULYskdPX4TqI+pV+o1/YZbm0RQ8Yg0WzAQMur7AvShoFSPngaeQkI4HAfX2dwM7JZCA==
 
-"@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.0-beta.7":
-  version "1.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-eip1193-proxy-subprovider/-/rlogin-eip1193-proxy-subprovider-1.0.0-beta.7.tgz#81eaab8f4480a5486f54fc432d55f99dcaae3cb5"
-  integrity sha512-CX3mDpTV1aUbKz05mWZr3v3FGINw6RVEXYw3+vmerBmoaj6DgwAxEYwy6bz62cl/7KPd8xj/OHhcprUo18fHvg==
+"@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.0-beta.8":
+  version "1.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-eip1193-proxy-subprovider/-/rlogin-eip1193-proxy-subprovider-1.0.0-beta.8.tgz#a775022c7d3aa3d9cf9b6aff0b86e26bf4985e46"
+  integrity sha512-gkUUYGT2qzwwe8bdUVOz4BsS0RoAmNNuZ/HgynhlEPQlVzhHM3G0UZygEGXr3SRqE+inReEPG/LSCz4mBDfKcQ==
   dependencies:
     buffer "^6.0.3"
     ethjs-provider-http "^0.1.6"
     ethjs-query "^0.3.8"
 
-"@rsksmart/rlogin-ledger-provider@^1.0.0-beta.7":
-  version "1.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-ledger-provider/-/rlogin-ledger-provider-1.0.0-beta.7.tgz#adef3d703f8749deffb89eb1f30a2c3283317c5d"
-  integrity sha512-/XpZUflIQ/Sv1r2O+kjIDSOX6T7RwZT9Q5BIkM/ChgnjnRdZ8Zz5FKl5ehI8nkX2RGLHtSgdtKuAw+waHiQEoQ==
+"@rsksmart/rlogin-ledger-provider@^1.0.0-beta.8":
+  version "1.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-ledger-provider/-/rlogin-ledger-provider-1.0.0-beta.8.tgz#fe371295f352748d57178ef7a7189038aad5feb5"
+  integrity sha512-8O4YYauOCbSrvb8gOd4cOZfR9El3hcp4irwcB/qdo66j43YVA/2MkCZl512OIv/XtVJDRgltjNIDGMUwqC43+g==
   dependencies:
     "@ethereumjs/tx" "^3.3.0"
     "@ledgerhq/hw-app-eth" "^6.2.0"
     "@ledgerhq/hw-transport-webhid" "^6.4.1"
     "@ledgerhq/hw-transport-webusb" "^6.3.0"
     "@rsksmart/rlogin-dpath" "^1.0.0-beta.7"
-    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.0-beta.7"
+    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.0-beta.8"
     "@rsksmart/rlogin-transactions" "^1.0.0-beta.7"
     assert "^2.0.0"
     bn.js "^5.2.0"
@@ -2141,25 +2141,25 @@
   dependencies:
     bn.js "^5.2.0"
 
-"@rsksmart/rlogin-trezor-provider@^1.0.0-beta.7":
-  version "1.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-trezor-provider/-/rlogin-trezor-provider-1.0.0-beta.7.tgz#b1019efeac610b391a0b0fd32bf9e2f6f6223302"
-  integrity sha512-teenauPEWNWnIJ2wlzRGkd/LGQbqbOIVtx+NrUkTVk/oHU1aIu+j9j4bjsBVd+lK7itM+gaa4Z5mRNY9l+pYKw==
+"@rsksmart/rlogin-trezor-provider@^1.0.0-beta.9":
+  version "1.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-trezor-provider/-/rlogin-trezor-provider-1.0.0-beta.9.tgz#680ebd9e211b16765cc6b996641015a37757482a"
+  integrity sha512-YBLLJFODfasWOJ9WEdvNQaBVJnI3LKvllUwefN6mMhy8VQ/gd8St5gBmlsctxNUf1cxnTcXfW3wsO+y30zuJlg==
   dependencies:
     "@ethereumjs/tx" "^3.3.0"
     "@rsksmart/rlogin-dpath" "^1.0.0-beta.7"
-    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.0-beta.7"
+    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.0-beta.8"
     "@rsksmart/rlogin-transactions" "^1.0.0-beta.7"
     assert "^2.0.0"
     buffer "^6.0.3"
     ethjs-provider-http "^0.1.6"
     stream-browserify "^3.0.0"
-    trezor-connect "^8.1.29"
+    trezor-connect "^8.2.1"
 
-"@rsksmart/rlogin@^1.2.0-beta.2":
-  version "1.2.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.2.0-beta.2.tgz#ff1953dee3c160be31d3794d591b4215680770e1"
-  integrity sha512-5xYdyG5Mj9eNNimSB5vnJI8Xaut3EyQkMb0flt5c5nkni3jLnviWtJz8PzqItqS6c8A4IPs/oKCRw9z3B3WjxA==
+"@rsksmart/rlogin@^1.2.0-beta.3":
+  version "1.2.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.2.0-beta.3.tgz#226901e9b9e22b6ae0957deda259292fbe64d010"
+  integrity sha512-FATI/o/niP8IfxZ619GWLL65PJgDN0+DjAhjDk4f7ONGwXxV1oSXE2ve/aqP/ZJ/flzzLRhGzi+bhY7Ms02QjA==
   dependencies:
     "@rsksmart/ipfs-cpinner-client-types" "^0.1.3"
     "@rsksmart/vc-json-schemas-parser" "^1.0.0"
@@ -2913,7 +2913,7 @@
     js-sha3 "0.8.0"
     query-string "6.13.5"
 
-"@walletconnect/web3-provider@^1.3.4":
+"@walletconnect/web3-provider@^1.6.5":
   version "1.6.5"
   resolved "https://registry.yarnpkg.com/@walletconnect/web3-provider/-/web3-provider-1.6.5.tgz#7c4ac2f89ddda1a4069d500ed29cc4396e7fdade"
   integrity sha512-SeC7+1saHxvFn2wjt/3F0sTkDemHDNDbMkdZ3jtA7vjEw91Q0CmaYIuZk2UxyVM+tC1jL1l4yci/sgaFeAcXpQ==
@@ -13831,10 +13831,10 @@ tr46@^2.1.0:
   dependencies:
     punycode "^2.1.1"
 
-trezor-connect@^8.1.29:
-  version "8.1.29"
-  resolved "https://registry.yarnpkg.com/trezor-connect/-/trezor-connect-8.1.29.tgz#8cccf0e4d4101d2331d3e56d60eb39d08d557f44"
-  integrity sha512-SYIT2C3mqNxTsDTglqgz6FyhgXbBFBo0q5WH9ABkyLUarjPNNt2PrmmgF5nT78RE5GwX5QvHoGl9Efis6+4e5Q==
+trezor-connect@^8.2.1:
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/trezor-connect/-/trezor-connect-8.2.1.tgz#2789dec6d7bb3bbfcacc35af9d47b9b48998b367"
+  integrity sha512-YqGgB6E440j8DHaIJCZumtjg5LdUgQyow2pzQRAIVFchhbTOgU3FnWGO3vEeRn9UQuY3pj8xVo0A0GKEtHAW8g==
   dependencies:
     "@babel/runtime" "^7.12.5"
     events "^3.2.0"
