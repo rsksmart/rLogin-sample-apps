@@ -4,6 +4,7 @@ import WalletConnectProvider from '@walletconnect/web3-provider'
 import Portis from '@portis/web3'
 import { trezorProviderOptions } from '@rsksmart/rlogin-trezor-provider'
 import { ledgerProviderOptions } from '@rsksmart/rlogin-ledger-provider'
+import { dcentProviderOptions } from '@rsksmart/rlogin-dcent-provider'
 import Eth from 'ethjs-query'
 import * as RIFDataVault from '@rsksmart/ipfs-cpinner-client'
 import './App.css';
@@ -34,21 +35,16 @@ const rLogin = new RLogin({
     },
     'custom-ledger': {
       ...ledgerProviderOptions,
+    },
+    'custom-dcent': {
+      ...dcentProviderOptions,
+    },
+    'custom-trezor': {
+      ...trezorProviderOptions,
       options: {
-        rpcUrl: 'https://public-node.testnet.rsk.co',
-        chainId: 31,
-        debug: true
+        manifestEmail: 'info@iovlabs.org',
+        manifestAppUrl: 'https://data-vault-sample.rlogin.identity.rifos.org/',
       }
-   },
-   'custom-trezor': {
-     ...trezorProviderOptions,
-     options: {
-       manifestEmail: 'info@iovlabs.org',
-       manifestAppUrl: 'https://data-vault-sample.rlogin.identity.rifos.org/',
-       rpcUrl: 'https://public-node.testnet.rsk.co',
-       chainId: 31,
-       debug: true
-     }
     }
   },
   supportedChains: [30, 31],
@@ -56,7 +52,11 @@ const rLogin = new RLogin({
   dataVaultOptions: {
     package: RIFDataVault,
     serviceUrl: 'https://data-vault.identity.rifos.org',
-  }
+  },
+  rpcUrls: {
+    30: 'https://public-node.rsk.co',
+    31: 'https://public-node.testnet.rsk.co'
+  },
 })
 
 const App = () => {
