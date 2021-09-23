@@ -33,31 +33,22 @@ const rLogin = new RLogin({
       }
     },
     'custom-ledger': {
-       ...ledgerProviderOptions,
-       options: {
-         rpcUrl: 'https://public-node.testnet.rsk.co',
-         chainId: 31,
-         debug: true
-       }
+      ...ledgerProviderOptions,
     },
     'custom-dcent': {
-       ...dcentProviderOptions,
-       options: {
-         rpcUrl: 'https://public-node.testnet.rsk.co',
-         chainId: 31,
-         debug: true
-       }
+      ...dcentProviderOptions,
     },
     'custom-trezor': {
       ...trezorProviderOptions,
       options: {
         manifestEmail: 'info@iovlabs.org',
         manifestAppUrl: 'https://basic-sample.rlogin.identity.rifos.org/',
-        rpcUrl: 'https://public-node.testnet.rsk.co',
-        chainId: 31,
-        debug: true
       }
     }
+  },
+  rpcUrls: {
+    30: 'https://public-node.rsk.co',
+    31: 'https://public-node.testnet.rsk.co'
   },
   supportedChains: [30, 31]
 })
