@@ -79,6 +79,10 @@ function App() {
   const [sendAmount, setSendAmount] = useState('100000')
   const [sendResponse, setSendResponse] = useState(null)
 
+  // sign typed data:
+  const [signTypedDataInput, setSignTypedDataInput] = useState('')
+  const [signTypedDataResponse, setSignTypedDataResponse] = useState(null)
+
   // Use the rLogin instance to connect to the provider
   const handleLogin = () => {
     rLogin.connect()
@@ -116,6 +120,63 @@ function App() {
 
   // Handle the requests to the provider
   const providerRPC = (provider, args) => provider.request(args)
+
+  let msgParams = {
+    domain: {
+      // Defining the chain aka Rinkeby testnet or Ethereum Main Net
+      chainId: 1,
+      // Give a user friendly name to the specific contract you are signing for.
+      name: 'Ether Mail',
+      // Just let's you know the latest version. Definitely make sure the field name is correct.
+      version: '1',
+    },
+
+    // Defining the message signing data content.
+    message: {
+      /*
+       - Anything you want. Just a JSON Blob that encodes the data you want to send
+       - No required fields
+       - This is DApp Specific
+       - Be as explicit as possible when building out the message schema.
+      */
+      contents: 'Hello Team!',
+      from: 'Diego',
+      to: 'Cesar',
+    },
+    // Refers to the keys of the *types* object below.
+    primaryType: 'Mail',
+    types: {
+      // TODO: Clarify if EIP712Domain refers to the domain the contract is hosted on
+      EIP712Domain: [
+        { name: 'name', type: 'string' },
+        { name: 'version', type: 'string' },
+        { name: 'chainId', type: 'uint256' },
+      ],
+      // Refer to PrimaryType
+      Mail: [
+        { name: 'from', type: 'string' },
+        { name: 'to', type: 'string' },
+        { name: 'contents', type: 'string' },
+      ],
+    },
+  };
+
+  // Sign typed data
+  const handleSignTypedData = (value) => {
+    setSignDataResponse('loading...')
+
+    msgParams.message.contents = value
+
+    providerRPC(
+      rLoginResponse.provider,
+      {
+        method: 'eth_signTypedData_v4',
+        params: [ JSON.stringify(msgParams), account ]
+      }
+    )
+    .then(response => setSignTypedDataResponse(response))
+    .catch(error => setSignTypedDataResponse(`[ERROR]: ${error.message}`))
+  }
 
   // Sign data
   const handleSignData = (value) => {
@@ -215,6 +276,15 @@ function App() {
             <p><button className="send" onClick={() => handleSendTransaction(sendToInput, sendAmount)}>Send Transaction</button></p>
             <p>Send Response:</p>
             <div className="response">{sendResponse}</div>
+          </section>
+
+          <section id="sendTypedData">
+            <h2>Sign Typed Data</h2>
+            <label htmlFor="dataInput">Value: </label>
+            <input name="dataInput" type="text" value={signTypedDataInput} onChange={evt => setSignTypedDataInput(evt.target.value)} />
+            <p><button className="send" onClick={() => handleSignTypedData(signTypedDataInput)}>Sign Typed Data</button></p>
+            <p>Sign Response:</p>
+            <div className="response">{signTypedDataResponse}</div>
           </section>
         </div>
       )}
