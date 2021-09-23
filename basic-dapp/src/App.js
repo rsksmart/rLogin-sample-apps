@@ -124,7 +124,7 @@ function App() {
   let msgParams = {
     domain: {
       // Defining the chain aka Rinkeby testnet or Ethereum Main Net
-      chainId: 1,
+      chainId: chainId,
       // Give a user friendly name to the specific contract you are signing for.
       name: 'Ether Mail',
       // Just let's you know the latest version. Definitely make sure the field name is correct.
@@ -164,14 +164,14 @@ function App() {
   // Sign typed data
   const handleSignTypedData = (value) => {
     setSignDataResponse('loading...')
-
     msgParams.message.contents = value
 
     providerRPC(
       rLoginResponse.provider,
       {
         method: 'eth_signTypedData_v4',
-        params: [ JSON.stringify(msgParams), account ]
+        params: [ account, JSON.stringify(msgParams) ],
+        from: account
       }
     )
     .then(response => setSignTypedDataResponse(response))
