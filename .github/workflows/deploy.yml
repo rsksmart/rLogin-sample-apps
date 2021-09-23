@@ -34,7 +34,7 @@ jobs:
               --instance-ids "${{ secrets.VM_EC2_ID }}" \
               --region=${{ secrets.MAIN_BASIC_DAPP_AWS_REGION }} \
               --comment "github interaction-rlogin-apps" \
-              --parameters '{"sourceType":["GitHub"],"sourceInfo":["{\"owner\":\"rootstock\", \"repository\":\"ask-devops\", \"path\": \"rif-marketplace/\",\"tokenInfo\":\"{{ssm-secure:github-token}}\"}"],"commandLine":["deploy-rlogin-back.sh"]}'
+              --parameters '{"sourceType":["GitHub"],"sourceInfo":["{\"owner\":\"rootstock\", \"repository\":\"ask-devops\", \"path\": \"rlogin/\",\"tokenInfo\":\"{{ssm-secure:github-token}}\"}"],"commandLine":["deploy-rlogin-back.sh"]}'
 
       - name: Deploy site to S3
         run: |
