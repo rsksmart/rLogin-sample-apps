@@ -163,7 +163,7 @@ function App() {
 
   // Sign typed data
   const handleSignTypedData = (value) => {
-    setSignDataResponse('loading...')
+    setSignTypedDataResponse('loading...')
     msgParams.message.contents = value
 
     providerRPC(
