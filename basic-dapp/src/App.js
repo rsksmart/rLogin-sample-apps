@@ -7,6 +7,8 @@ import { trezorProviderOptions } from '@rsksmart/rlogin-trezor-provider'
 import { ledgerProviderOptions } from '@rsksmart/rlogin-ledger-provider'
 import { dcentProviderOptions } from '@rsksmart/rlogin-dcent-provider'
 import './App.css';
+import Web3 from 'web3'
+import { ethers } from 'ethers'
 
 // Create a new rLogin instance with your custom providerOptions outside of the 
 // component.
@@ -184,6 +186,29 @@ function App() {
     .catch(error => setSignDataResponse(`[ERROR]: ${error.message}`))
   }
 
+  // Sign data WEB3
+  const handleSignDataWEB3 = async (value) => {
+    if (rLoginResponse !== null) {
+      const web3 = new Web3(rLoginResponse.provider)
+      const fromAddress = (await web3.eth.getAccounts())[0]
+      const signedMessage = await web3.eth.sign(value, fromAddress)
+      .catch(error => setSignDataResponse(`[ERROR]: ${error.message}`))
+      setSignDataResponse(signedMessage)
+    }
+  }
+
+  // Sign data Ethers
+  const handleSignDataEthers = async (value) => {
+
+    if (rLoginResponse !== null) {
+      const provider = new ethers.providers.Web3Provider(rLoginResponse.provider)
+      const signer = provider.getSigner()
+      const signedMessage = await signer.signMessage(value)
+      .catch(error => setSignDataResponse(`[ERROR]: ${error.message}`))
+      setSignDataResponse(signedMessage)
+    }
+  }
+
   // Send transaction
   const handleSendTransaction = (to, value) => {
     setSendResponse('loading...')
@@ -198,6 +223,34 @@ function App() {
     .then(response => setSendResponse(response))
     .catch(error => setSendResponse(`[ERROR]: ${error.message}`))
   }
+
+  // Send transaction
+  const handleSendTransactionWEB3 = async (to, value) => {
+    
+    if (rLoginResponse !== null) {
+      const web3 = new Web3(rLoginResponse.provider)
+      const fromAddress = (await web3.eth.getAccounts())[0]
+      web3.eth.sendTransaction({
+        from: fromAddress,
+        to: to,
+        value: value
+      })
+      .then(response => setSendResponse(response))
+      .catch(error => setSendResponse(`[ERROR]: ${error.message}`))
+    }
+  }
+
+    // Send transaction
+    const handleSendTransactionEthers = async (to, value) => {
+      if (rLoginResponse !== null) {
+        const provider = new ethers.providers.Web3Provider(rLoginResponse.provider)
+        const signer = provider.getSigner()
+        setSendResponse('Please check your wallet')
+        const tx = await signer.sendTransaction({ to, value: parseInt(value) })
+        .catch(error => setSendResponse(`[ERROR]: ${error.message}`))
+        setSendResponse(tx.hash)
+      }
+    }
 
   // handle logging out
   const handleLogOut = (response) => {
@@ -248,6 +301,8 @@ function App() {
               <label htmlFor="dataInput">Value: </label>
               <input name="dataInput" type="text" value={signDataInput} onChange={evt => setSignDataInput(evt.target.value)} />
               <button className="sign" onClick={() => handleSignData(signDataInput)}>Sign Data</button>
+              <button className="sign" onClick={() => handleSignDataWEB3(signDataInput)}>Sign Data Web3</button>
+              <button className="sign" onClick={() => handleSignDataEthers(signDataInput)}>Sign Data Ethers</button>
             </p>
             
             <p>Signed Data Response:</p>
@@ -264,7 +319,12 @@ function App() {
               <label htmlFor="sendAmount">Amount: </label>
               <input name="sendAmount" type="number" value={sendAmount} onChange={evt => setSendAmount(evt.target.value)} />
             </p>
-            <p><button className="send" onClick={() => handleSendTransaction(sendToInput, sendAmount)}>Send Transaction</button></p>
+            <p>
+              <button className="send" onClick={() => handleSendTransaction(sendToInput, sendAmount)}>Send Transaction</button>
+              <button className="send" onClick={() => handleSendTransactionWEB3(sendToInput, sendAmount)}>Send Transaction WEB3</button>
+              <button className="send" onClick={() => handleSendTransactionEthers(sendToInput, sendAmount)}>Send Transaction Ethers</button>
+            </p>
+
             <p>Send Response:</p>
             <div className="response">{sendResponse}</div>
           </section>
