@@ -27,7 +27,7 @@ describe('permissioned e2e testing', () => {
     // mock response from the app
     cy.intercept('GET', 'http(.+)request-signup(.+)', { fixture: 'request-signup.json' }).as('requestSignup')  
 
-    cy.get('.rlogin-header2').should('have.text', 'Would you like to give usaccess to info in your data vault?')
+    cy.get('.rlogin-header2').should('have.text', 'Would you like to give us access to info in your data vault?')
     cy.contains('Access Data Vault').click()
 
     // mock response exchange to and from the Data Vault
