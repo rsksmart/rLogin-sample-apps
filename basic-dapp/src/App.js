@@ -301,8 +301,8 @@ function App() {
               <label htmlFor="dataInput">Value: </label>
               <input name="dataInput" type="text" value={signDataInput} onChange={evt => setSignDataInput(evt.target.value)} />
               <button className="sign" onClick={() => handleSignData(signDataInput)}>Sign Data</button>
-              <button className="sign" onClick={() => handleSignDataWEB3(signDataInput)}>Sign Data Web3</button>
-              <button className="sign" onClick={() => handleSignDataEthers(signDataInput)}>Sign Data Ethers</button>
+              <button className="signWeb3" onClick={() => handleSignDataWEB3(signDataInput)}>Sign Data Web3</button>
+              <button className="signEthers" onClick={() => handleSignDataEthers(signDataInput)}>Sign Data Ethers</button>
             </p>
             
             <p>Signed Data Response:</p>
@@ -321,8 +321,8 @@ function App() {
             </p>
             <p>
               <button className="send" onClick={() => handleSendTransaction(sendToInput, sendAmount)}>Send Transaction</button>
-              <button className="send" onClick={() => handleSendTransactionWEB3(sendToInput, sendAmount)}>Send Transaction WEB3</button>
-              <button className="send" onClick={() => handleSendTransactionEthers(sendToInput, sendAmount)}>Send Transaction Ethers</button>
+              <button className="sendWeb3" onClick={() => handleSendTransactionWEB3(sendToInput, sendAmount)}>Send Transaction WEB3</button>
+              <button className="sendEthers" onClick={() => handleSendTransactionEthers(sendToInput, sendAmount)}>Send Transaction Ethers</button>
             </p>
 
             <p>Send Response:</p>
@@ -333,7 +333,7 @@ function App() {
             <h2>Sign Typed Data</h2>
             <label htmlFor="dataInput">Value: </label>
             <input name="dataInput" type="text" value={signTypedDataInput} onChange={evt => setSignTypedDataInput(evt.target.value)} />
-            <p><button className="send" onClick={() => handleSignTypedData(signTypedDataInput)}>Sign Typed Data</button></p>
+            <p><button className="signTypeData" onClick={() => handleSignTypedData(signTypedDataInput)}>Sign Typed Data</button></p>
             <p>Sign Response:</p>
             <div className="response">{signTypedDataResponse}</div>
           </section>

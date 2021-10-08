@@ -17,6 +17,7 @@ describe('basic app e2e testing', () => {
     cy.visit('/')
     cy.contains('Connect with rLogin').click()
     cy.contains('MetaMask').click()
+    cy.contains('Confirm').click()
   })
 
   it('shows MetaMask with address and chainId', () => {
