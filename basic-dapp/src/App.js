@@ -11,6 +11,18 @@ import './App.css';
 import Web3 from 'web3'
 import { ethers } from 'ethers'
 
+const rpcUrls = {
+  30: 'https://public-node.rsk.co',
+  31: 'https://public-node.testnet.rsk.co',
+  1: 'https://mainnet.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Ethereum Mainnet
+  3: 'https://ropsten.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Ropsten
+  4: 'https://rinkeby.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Rinkeby
+  5: 'https://goerli.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Goerli
+  42: 'https://kovan.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5' // Kovan
+}
+
+const supportedChains = Object.keys(rpcUrls).map(Number)
+
 // Create a new rLogin instance with your custom providerOptions outside of the 
 // component.
 const rLogin = new RLogin({
@@ -19,10 +31,7 @@ const rLogin = new RLogin({
     walletconnect: {
       package: WalletConnectProvider,
       options: {
-        rpc: {
-          30: 'https://public-node.rsk.co',
-          31: 'https://public-node.testnet.rsk.co',
-        }
+        rpc: rpcUrls
       }
     },
     portis: {
@@ -52,11 +61,8 @@ const rLogin = new RLogin({
       }
     }
   },
-  rpcUrls: {
-    30: 'https://public-node.rsk.co',
-    31: 'https://public-node.testnet.rsk.co'
-  },
-  supportedChains: [30, 31]
+  rpcUrls,
+  supportedChains
 })
 
 function App() {
