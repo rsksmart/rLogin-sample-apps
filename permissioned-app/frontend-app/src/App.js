@@ -10,6 +10,16 @@ import Eth from 'ethjs-query'
 import * as RIFDataVault from '@rsksmart/ipfs-cpinner-client'
 import './App.css';
 
+const rpcUrls = {
+  30: 'https://public-node.rsk.co',
+  31: 'https://public-node.testnet.rsk.co',
+  1: 'https://mainnet.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Ethereum Mainnet
+  3: 'https://ropsten.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Ropsten
+  4: 'https://rinkeby.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Rinkeby
+  5: 'https://goerli.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Goerli
+  42: 'https://kovan.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5' // Kovan
+}
+
 // Create a new rLogin instance with your custom providerOptions outside of the 
 // component.
 const rLogin = new RLogin({
@@ -18,10 +28,7 @@ const rLogin = new RLogin({
     walletconnect: {
       package: WalletConnectProvider,
       options: {
-        rpc: {
-          30: 'https://public-node.rsk.co',
-          31: 'https://public-node.testnet.rsk.co',
-        }
+        rpc: rpcUrls
       }
     },
     portis: {
@@ -57,10 +64,8 @@ const rLogin = new RLogin({
     package: RIFDataVault,
     serviceUrl: 'https://data-vault.identity.rifos.org',
   },
-  rpcUrls: {
-    30: 'https://public-node.rsk.co',
-    31: 'https://public-node.testnet.rsk.co'
-  },
+  rpcUrls,
+  supportedChains: [30, 31, 1, 3, 4, 5, 42]
 })
 
 const App = () => {
