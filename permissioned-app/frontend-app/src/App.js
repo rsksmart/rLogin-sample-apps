@@ -20,6 +20,8 @@ const rpcUrls = {
   42: 'https://kovan.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5' // Kovan
 }
 
+const supportedChains = Object.keys(rpcUrls).map(Number)
+
 // Create a new rLogin instance with your custom providerOptions outside of the 
 // component.
 const rLogin = new RLogin({
@@ -58,14 +60,13 @@ const rLogin = new RLogin({
       }
     }
   },
-  supportedChains: [30, 31],
+  rpcUrls,
+  supportedChains,
   backendUrl: 'https://data-vault-sample-backend.rlogin.identity.rifos.org',
   dataVaultOptions: {
     package: RIFDataVault,
     serviceUrl: 'https://data-vault.identity.rifos.org',
-  },
-  rpcUrls,
-  supportedChains: [30, 31, 1, 3, 4, 5, 42]
+  }
 })
 
 const App = () => {
