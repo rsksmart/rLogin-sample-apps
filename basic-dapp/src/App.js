@@ -54,9 +54,14 @@ const rLogin = new RLogin({
   },
   rpcUrls: {
     30: 'https://public-node.rsk.co',
-    31: 'https://public-node.testnet.rsk.co'
+    31: 'https://public-node.testnet.rsk.co',
+    1: 'https://mainnet.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Ethereum Mainnet
+    3: 'https://ropsten.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Ropsten
+    4: 'https://rinkeby.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Rinkeby
+    5: 'https://goerli.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5', // Goerli
+    42: 'https://kovan.infura.io/v3/7d5d71df32d548249ff444f6a43b43c5' // Kovan
   },
-  supportedChains: [30, 31]
+  supportedChains: [30, 31, 1, 3, 4, 5, 42]
 })
 
 function App() {
