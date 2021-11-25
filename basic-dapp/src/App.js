@@ -26,12 +26,13 @@ const supportedChains = Object.keys(rpcUrls).map(Number)
 // Create a new rLogin instance with your custom providerOptions outside of the 
 // component.
 const rLogin = new RLogin({
-  cacheProvider: true,
+  cacheProvider: false,
   providerOptions: {
     walletconnect: {
       package: WalletConnectProvider,
       options: {
-        rpc: rpcUrls
+        rpc: rpcUrls,
+        bridge: 'https://walletconnect-bridge.rifos.org/'
       }
     },
     portis: {

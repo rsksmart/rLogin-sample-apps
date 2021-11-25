@@ -30,7 +30,8 @@ const rLogin = new RLogin({
     walletconnect: {
       package: WalletConnectProvider,
       options: {
-        rpc: rpcUrls
+        rpc: rpcUrls,
+        bridge: 'https://walletconnect-bridge.rifos.org/'
       }
     },
     portis: {
