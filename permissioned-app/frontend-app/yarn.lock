@@ -1176,6 +1176,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.15.4":
+  version "7.17.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.2.tgz#66f68591605e59da47523c631416b18508779941"
+  integrity sha512-hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.10.4", "@babel/template@^7.15.4", "@babel/template@^7.3.3":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.15.4.tgz#51898d35dcf3faa670c4ee6afcfd517ee139f194"
@@ -2142,15 +2149,15 @@
   dependencies:
     eth-sig-util "^3.0.1"
 
-"@rsksmart/rlogin-dcent-provider@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dcent-provider/-/rlogin-dcent-provider-1.0.1.tgz#0ab8188ce1302a2ce0cd4c4453ac16c522ca3c8f"
-  integrity sha512-9QobexcjP+1SmPKz1RwuHFTNANjg/Rh7tR4vmF8j+Od8ZsRn1KP1d1XPONdfE4DdOjC5stWWTaNWWNA8zEJWdA==
+"@rsksmart/rlogin-dcent-provider@^1.0.2-beta.2":
+  version "1.0.2-beta.2"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dcent-provider/-/rlogin-dcent-provider-1.0.2-beta.2.tgz#bae94b358ffd928bc08df73cf87dcb6895ae5145"
+  integrity sha512-7STeuLv2Ct9EA8Mq3PnDKTWfraqhdYMBm4/aWUmlQLzjaXN6rLaNcMeC5l75cMqu/xh4afuPQTzm+9W6xQw4Lg==
   dependencies:
     "@rsksmart/dcent-provider" "^0.3.0-beta"
     "@rsksmart/rlogin-dpath" "^1.0.1"
-    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.1"
-    "@rsksmart/rlogin-transactions" "^1.0.1"
+    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.2-beta.1"
+    "@rsksmart/rlogin-transactions" "^1.0.2-beta.2"
     assert "^2.0.0"
     buffer "^6.0.3"
     stream-browserify "^3.0.0"
@@ -2162,63 +2169,70 @@
   resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dpath/-/rlogin-dpath-1.0.1.tgz#5ecb1d094d248231cbeda267c1fc5a779c8e46e3"
   integrity sha512-97aalCxqCy6/JyE5eefka2isC9rU2hfvspQRfkvEVKB3zGJsC/xK0onDwCFH0kBCdkUn2K3lLO0GRnOStdbpIQ==
 
-"@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-eip1193-proxy-subprovider/-/rlogin-eip1193-proxy-subprovider-1.0.1.tgz#b909fb049df136d809e9eec9b27bec32de0a3d3c"
-  integrity sha512-OIlaosjIPNJcBg+iNAHgq/POsZJZ3I71hRSyzniIB71VdrY7R2p/Uch63XLfzuD+Md7vzQ6NiAmWepEC5HivkQ==
+"@rsksmart/rlogin-dpath@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dpath/-/rlogin-dpath-1.0.3.tgz#c9863d16b3e6ffc6770f40c05d7e5d865a6b91d6"
+  integrity sha512-uWrzaQbnApLIBdVNqF2NdqdfIJ2jG0XrSFC+XJ5Wuo2nap4PVxc45U+GlmTy1qqK9PJ0g/d9F/dR5n51EhqlVw==
+
+"@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.2", "@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.2-beta.1":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-eip1193-proxy-subprovider/-/rlogin-eip1193-proxy-subprovider-1.0.2.tgz#a5b63e770996f481208b47d09b308d18a8c7d807"
+  integrity sha512-CefI6gtv4shMgbWkEakkHF8Igcx7juTrqWJqk8qGAozHU5hsf+yk5yYkrGsCuAI/mz98X2ewhe6Cwuly6hOTIw==
   dependencies:
     buffer "^6.0.3"
     ethjs-provider-http "^0.1.6"
     ethjs-query "^0.3.8"
 
-"@rsksmart/rlogin-ledger-provider@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-ledger-provider/-/rlogin-ledger-provider-1.0.1.tgz#d61a9999e88635d08fcd0d8fa79f0f5b1413f1a0"
-  integrity sha512-WrhHXOGv/qzcxnAlroLvPb5b5e0kiRA36p4COWuzLYFlC9ivBCZThrXSPC4hZFAgHlzS6ZziIk56u2T4OIz4MQ==
+"@rsksmart/rlogin-ledger-provider@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-ledger-provider/-/rlogin-ledger-provider-1.0.2.tgz#9010fc29bfe7a4987ea9bbba7225db604095b321"
+  integrity sha512-0836xSv6TrXEO/ybZjwRAQF5mAs3sI3tbXKFPWMlfqRpCyj1tCoFl3Q5b2HX36QRw+8YePiCUXQ7cX2RnvXe+A==
   dependencies:
     "@ethereumjs/tx" "^3.3.0"
     "@ledgerhq/hw-app-eth" "^6.2.0"
     "@ledgerhq/hw-transport-webhid" "^6.4.1"
     "@ledgerhq/hw-transport-webusb" "^6.3.0"
-    "@rsksmart/rlogin-dpath" "^1.0.1"
-    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.1"
-    "@rsksmart/rlogin-transactions" "^1.0.1"
+    "@rsksmart/rlogin-dpath" "^1.0.3"
+    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.2"
+    "@rsksmart/rlogin-transactions" "^1.0.2"
     assert "^2.0.0"
     bn.js "^5.2.0"
     buffer "^6.0.3"
     stream-browserify "^3.0.0"
 
-"@rsksmart/rlogin-transactions@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-transactions/-/rlogin-transactions-1.0.1.tgz#587137f62b6d0b2874496cdadc1a5222bb01445e"
-  integrity sha512-4t1FZH6h2TnLfFbfhfY29ENmbTvg56PC6j7awYuWpiQUF/1tMUnrUJ9QX7IaTSJ2QX2QaHu4CuG811iaPRhR0A==
+"@rsksmart/rlogin-transactions@^1.0.2", "@rsksmart/rlogin-transactions@^1.0.2-beta.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-transactions/-/rlogin-transactions-1.0.2.tgz#324bdd59e65c75235ae84f4482b5b7bbc476afcb"
+  integrity sha512-O0UQbeoEj1ynkk7iKTIAxB1YyomfDtA+k1uLeED8hrSd7goNeRWeZj4bmArVV4c3+1msvuVKXlm5n5LXVoPIaA==
   dependencies:
     bn.js "^5.2.0"
 
-"@rsksmart/rlogin-trezor-provider@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-trezor-provider/-/rlogin-trezor-provider-1.0.1.tgz#a77226326ee0e6d3d35d08c5ab8bfd9694317603"
-  integrity sha512-EFQv3gYcxWiyNbZyd4ErMC+2zAnIOSNUfhXLOg3ZMD4bTh9ccjydH6tUMAfNli1lE9xabNQP84dBeQu/Mc2EIw==
+"@rsksmart/rlogin-trezor-provider@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-trezor-provider/-/rlogin-trezor-provider-1.0.2.tgz#0acbcdb7e4fb00f9b4062a61418e8c5175f6684f"
+  integrity sha512-2vIr7oRUyv7OodMxANGl2Ty+alVWEE5byK3+kSfXJdLkzhCDsNojlBOgASKZ7PFqQpu+1E4HqiwTq5mJaoNNTw==
   dependencies:
     "@ethereumjs/tx" "^3.3.0"
-    "@rsksmart/rlogin-dpath" "^1.0.1"
-    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.1"
-    "@rsksmart/rlogin-transactions" "^1.0.1"
+    "@rsksmart/rlogin-dpath" "^1.0.3"
+    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.2"
+    "@rsksmart/rlogin-transactions" "^1.0.2"
     assert "^2.0.0"
     buffer "^6.0.3"
     ethjs-provider-http "^0.1.6"
     stream-browserify "^3.0.0"
-    trezor-connect "^8.2.1"
+    trezor-connect "^8.2.5"
 
-"@rsksmart/rlogin@^1.3.0-beta.1":
-  version "1.3.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.3.0-beta.1.tgz#7c2ffe8488f9f8dd751c17dcd1365423c3b32f20"
-  integrity sha512-QS3VzM9u8g8ftJTJJfjIFoWNXuJifw0jnZ8m1MePLETnrEfHLkfMluozOtIdGON21VaqcmglK9Vl3/dvtM+C+Q==
+"@rsksmart/rlogin@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.3.1.tgz#ec535424de8d3a463aca10601fa076997311d7e1"
+  integrity sha512-olVy6vmRShlgZUzAPYfW95Jq/ItS4WECTIa84mJRQ1wg8sLKkIQEwHDId8p+V8df6CdCCuwepTSPqYb+YrC01Q==
   dependencies:
     "@rsksmart/ipfs-cpinner-client-types" "^0.1.3"
+    "@rsksmart/rlogin-dpath" "^1.0.1"
     "@rsksmart/vc-json-schemas-parser" "^1.0.0"
     "@types/styled-components" "^5.1.3"
     axios "^0.21.1"
+    buffer "^6.0.3"
     ethr-did-resolver "^3.0.2"
     i18next "^20.3.5"
     i18next-browser-languagedetector "^6.1.2"
@@ -5188,6 +5202,13 @@ cross-fetch@^2.1.0:
     node-fetch "2.6.1"
     whatwg-fetch "2.0.4"
 
+cross-fetch@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.5.tgz#e1389f44d9e7ba767907f7af8454787952ab534f"
+  integrity sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==
+  dependencies:
+    node-fetch "2.6.7"
+
 cross-spawn@7.0.3, cross-spawn@^7.0.0, cross-spawn@^7.0.2:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -6947,7 +6968,7 @@ eventemitter3@4.0.7, eventemitter3@^4.0.0:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
 
-events@^3.0.0, events@^3.2.0, events@^3.3.0:
+events@^3.0.0, events@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
   integrity sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==
@@ -10289,6 +10310,13 @@ node-fetch@2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
+
+node-fetch@2.6.7:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
+  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
+  dependencies:
+    whatwg-url "^5.0.0"
 
 node-fetch@^2.6.0, node-fetch@^2.6.1:
   version "2.6.5"
@@ -13944,14 +13972,14 @@ tr46@~0.0.3:
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=
 
-trezor-connect@^8.2.1:
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/trezor-connect/-/trezor-connect-8.2.1.tgz#2789dec6d7bb3bbfcacc35af9d47b9b48998b367"
-  integrity sha512-YqGgB6E440j8DHaIJCZumtjg5LdUgQyow2pzQRAIVFchhbTOgU3FnWGO3vEeRn9UQuY3pj8xVo0A0GKEtHAW8g==
+trezor-connect@^8.2.5:
+  version "8.2.7"
+  resolved "https://registry.yarnpkg.com/trezor-connect/-/trezor-connect-8.2.7.tgz#4bdd4d5e2560f7bd0847b9858cdc944de21150b6"
+  integrity sha512-SoRDqZoTLb7W0nk7B9OimRoUCGRUc6htEJrHcB0nbC1Fs6Uw5lxCGn/agYCbqgX3oiWs2MIu0UMt+1Ky634Enw==
   dependencies:
-    "@babel/runtime" "^7.12.5"
-    events "^3.2.0"
-    whatwg-fetch "^3.5.0"
+    "@babel/runtime" "^7.15.4"
+    cross-fetch "^3.1.5"
+    events "^3.3.0"
 
 tryer@^1.0.1:
   version "1.0.1"
@@ -14926,7 +14954,7 @@ whatwg-fetch@2.0.4:
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
   integrity sha512-dcQ1GWpOD/eEQ97k66aiEVpNnapVj90/+R+SXTPYGHpYBBypfKJEQjLrvMZ7YXbKm21gXd4NcuxUTjiv1YtLng==
 
-whatwg-fetch@^3.4.1, whatwg-fetch@^3.5.0:
+whatwg-fetch@^3.4.1:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
   integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==
