@@ -26,12 +26,13 @@ const supportedChains = Object.keys(rpcUrls).map(Number)
 // Create a new rLogin instance with your custom providerOptions outside of the 
 // component.
 const rLogin = new RLogin({
-  cacheProvider: true,
+  cacheProvider: false,
   providerOptions: {
     walletconnect: {
       package: WalletConnectProvider,
       options: {
-        rpc: rpcUrls
+        rpc: rpcUrls,
+        bridge: 'https://walletconnect-bridge.rifos.org/'
       }
     },
     portis: {
@@ -251,14 +252,14 @@ function App() {
   }
 
     // Send transaction
-    const handleSendTransactionEthers = async (to, value) => {
+    const handleSendTransactionEthers = (to, value) => {
       if (rLoginResponse !== null) {
         const provider = new ethers.providers.Web3Provider(rLoginResponse.provider)
         const signer = provider.getSigner()
         setSendResponse('Please check your wallet')
-        const tx = await signer.sendTransaction({ to, value: parseInt(value) })
-        .catch(error => setSendResponse(`[ERROR]: ${error.message}`))
-        setSendResponse(tx.hash)
+        signer.sendTransaction({ to, value: parseInt(value) })
+          .then(response => setSendResponse(response.hash))
+          .catch(error => setSendResponse(`[ERROR]: ${error.message}`))
       }
     }
 
