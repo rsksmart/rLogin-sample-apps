@@ -9,6 +9,7 @@
     "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
     "start:backend": "npx nodemon backend/index.js",
     "start:frontend": "yarn --cwd ./frontend-app start",
+    "start:ci": "concurrently \"yarn --cwd ./frontend-app start\" \"node backend/index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

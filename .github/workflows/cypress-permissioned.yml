@@ -5,16 +5,15 @@ on:
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install Dependencies
+      - name: Install Dependencies and Start
         run: |
           yarn
-          yarn start:frontend &
-          yarn start:backend
+          yarn start:ci
         working-directory: permissioned-app
 
       - name: Cypress run
