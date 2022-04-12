@@ -1,0 +1,23 @@
+name: Cypress Tests - Basic Dapp
+
+on:
+  pull_request
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./basic-dapp
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn
+          start: yarn start
+          record: false
+          wait-on-timeout: 120
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
