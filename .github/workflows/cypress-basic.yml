@@ -15,7 +15,7 @@ jobs:
         with:
           working-directory: basic-dapp
           build: yarn
-          start: yarn cypress:run
+          start: yarn start
           record: false
           wait-on-timeout: 120
         env:
