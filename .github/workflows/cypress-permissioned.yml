@@ -10,10 +10,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install and run
-        run: |
-          yarn
-          yarn start
+      - name: Install Dependencies
+        run: yarn
+        working-directory: permissioned-app
+
+      - name: Run front and back
+        run: yarn start
         working-directory: permissioned-app
 
       - name: Cypress run
