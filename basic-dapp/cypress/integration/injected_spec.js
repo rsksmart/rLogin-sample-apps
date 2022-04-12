@@ -28,8 +28,15 @@ describe('basic app e2e testing', () => {
   })
 
   it('signs messages', () => {
+    const personalSignResponse = '0xbb14d14dba17f231efd1680c3e150a175ba894183ef6019f4a3100fe0d17938246fcc5656a8fa76ed11c00ffd6944ed08bca23880e39a1a384d3a33e04aaf38e1c'
     cy.get('button.sign').click()
-    cy.get('#signData .response').should('have.text', '0xbb14d14dba17f231efd1680c3e150a175ba894183ef6019f4a3100fe0d17938246fcc5656a8fa76ed11c00ffd6944ed08bca23880e39a1a384d3a33e04aaf38e1c')
+    cy.get('#signData .response').should('have.text', personalSignResponse)
+
+    cy.get('button.signWeb3').click()
+    cy.get('#signData .response').should('have.text', personalSignResponse)
+
+    cy.get('button.signEthers').click()
+    cy.get('#signData .response').should('have.text', personalSignResponse)
   })
 
   it('trys to send a transaction', () => {
