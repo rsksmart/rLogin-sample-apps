@@ -15,7 +15,8 @@ jobs:
         working-directory: permissioned-app
 
       - name: Run front and back
-        run: yarn start
+        run: yarn start:frontend &
+        run: yarn start:backend
         working-directory: permissioned-app
 
       - name: Cypress run
