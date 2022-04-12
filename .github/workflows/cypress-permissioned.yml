@@ -14,12 +14,12 @@ jobs:
         run: |
           yarn
           yarn start
-        working-directory: permissioned-dapp
+        working-directory: permissioned-app
 
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          working-directory: permissioned-dapp/frontend-app
+          working-directory: permissioned-app/frontend-app
           record: false
           wait-on-timeout: 120
           wait-on: 'http://localhost:3000'
