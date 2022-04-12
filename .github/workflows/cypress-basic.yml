@@ -3,10 +3,6 @@ name: Cypress Tests - Basic Dapp
 on:
   pull_request
 
-defaults:
-  run:
-    working-directory: basic-dapp
-
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -17,6 +13,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
+          working-directory: basic-dapp
           build: yarn
           start: yarn cypress:run
           record: false
