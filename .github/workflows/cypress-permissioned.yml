@@ -1,0 +1,28 @@
+name: Cypress Tests - Permissioned App
+
+on:
+  pull_request
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install and run
+        run: |
+          yarn
+          yarn start
+        with:
+          working-directory: permissioned-dapp
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: permissioned-dapp/frontend-app
+          record: false
+          wait-on-timeout: 120
+          wait-on: 'http://localhost:3000'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
