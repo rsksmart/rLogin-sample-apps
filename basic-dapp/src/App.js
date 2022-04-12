@@ -202,7 +202,7 @@ function App() {
     if (rLoginResponse !== null) {
       const web3 = new Web3(rLoginResponse.provider)
       const fromAddress = (await web3.eth.getAccounts())[0]
-      const signedMessage = await web3.eth.sign(value, fromAddress)
+      const signedMessage = await web3.eth.personal.sign(value, fromAddress)
       .catch(error => setSignDataResponse(`[ERROR]: ${error.message}`))
       setSignDataResponse(signedMessage)
     }
