@@ -2001,6 +2001,13 @@
   dependencies:
     eth-sig-util "^3.0.1"
 
+"@rsksmart/mock-web3-provider@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@rsksmart/mock-web3-provider/-/mock-web3-provider-1.0.0.tgz#720c61a1a2f7ff6d06b8460402e9e0951b0f5ed5"
+  integrity sha512-xzE2lDvvUmq1Osy1EUsGlLg0YwygjaQu9LR3UjDOtXbLz/AT9b0tzyO5hB9hXt32Hz6UOArRH/cNCQwCOzXn5g==
+  dependencies:
+    eth-sig-util "^3.0.1"
+
 "@rsksmart/rlogin-dcent-provider@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dcent-provider/-/rlogin-dcent-provider-1.0.1.tgz#0ab8188ce1302a2ce0cd4c4453ac16c522ca3c8f"
@@ -2069,12 +2076,13 @@
     stream-browserify "^3.0.0"
     trezor-connect "^8.2.5"
 
-"@rsksmart/rlogin@^1.3.0-beta.1":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.3.2.tgz#d9f3928ea975354dde419cb726b1d57237ed0d5b"
-  integrity sha512-OTGvSf2HqREfJFete7VG40v4wqhMpbMxEjzBuytGskvKqT4JEwkTZQeHPSj4gaOCsUdMmGt57xzUWKVnH2rK+A==
+"@rsksmart/rlogin@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.3.3.tgz#8db71b51513c84e65024e9ada986d0e507711672"
+  integrity sha512-VXFYBjO4qlcR+s/HtwmOYeQ8Lcae6lZgto9d5fsbliypxpF+CrUsfq8n6lLdGJSeeazWPTF7a2GnzLw9tqPSSA==
   dependencies:
     "@rsksmart/ipfs-cpinner-client-types" "^0.1.3"
+    "@rsksmart/mock-web3-provider" "^1.0.0"
     "@rsksmart/rlogin-dpath" "^1.0.1"
     "@rsksmart/vc-json-schemas-parser" "^1.0.0"
     "@types/styled-components" "^5.1.3"
