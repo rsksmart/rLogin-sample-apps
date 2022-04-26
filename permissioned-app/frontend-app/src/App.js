@@ -141,7 +141,7 @@ const App = () => {
   // handle logging out
   const handleLogOut = (response) => {
     // remove EIP 1193 listeners that were set above
-    response.provider.removeAllListeners()
+    response.provider.removeAllListeners && response.provider.removeAllListeners()
 
     // send the disconnect method
     response.disconnect()

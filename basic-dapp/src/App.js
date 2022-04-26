@@ -107,7 +107,7 @@ function App() {
           if (accounts.length === 0) {
             return handleLogOut(response)
           }
-          provider.removeAllListeners()
+          provider.removeAllListeners && provider.removeAllListeners()
           handleLogin()
         })
         provider.on('chainChanged', () => handleLogOut(response))
@@ -267,7 +267,7 @@ function App() {
   // handle logging out
   const handleLogOut = (response) => {
     // remove EIP 1193 listeners that were set above
-    response.provider.removeAllListeners()
+    response.provider.removeAllListeners && response.provider.removeAllListeners()
 
     // send the disconnect method
     response.disconnect()
