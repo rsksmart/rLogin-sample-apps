@@ -237,13 +237,13 @@ function App() {
 
   // Send transaction
   const handleSendTransactionWEB3 = async (to, value) => {
-    
+    setSendResponse('loading...')
     if (rLoginResponse !== null) {
       const web3 = new Web3(rLoginResponse.provider)
       const fromAddress = (await web3.eth.getAccounts())[0]
       web3.eth.sendTransaction({
-        from: fromAddress,
-        to: to,
+        from: fromAddress.toLowerCase(),
+        to: to.toLowerCase(),
         value: value
       })
       .then(response => setSendResponse(response))
@@ -253,11 +253,12 @@ function App() {
 
     // Send transaction
     const handleSendTransactionEthers = (to, value) => {
+      setSendResponse('loading...')
       if (rLoginResponse !== null) {
         const provider = new ethers.providers.Web3Provider(rLoginResponse.provider)
         const signer = provider.getSigner()
         setSendResponse('Please check your wallet')
-        signer.sendTransaction({ to, value: parseInt(value) })
+        signer.sendTransaction({ to: to.toLowerCase(), value: parseInt(value) })
           .then(response => setSendResponse(response.hash))
           .catch(error => setSendResponse(`[ERROR]: ${error.message}`))
       }
