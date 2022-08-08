@@ -2149,22 +2149,22 @@
   dependencies:
     eth-sig-util "^3.0.1"
 
-"@rsksmart/mock-web3-provider@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rsksmart/mock-web3-provider/-/mock-web3-provider-1.0.0.tgz#720c61a1a2f7ff6d06b8460402e9e0951b0f5ed5"
-  integrity sha512-xzE2lDvvUmq1Osy1EUsGlLg0YwygjaQu9LR3UjDOtXbLz/AT9b0tzyO5hB9hXt32Hz6UOArRH/cNCQwCOzXn5g==
+"@rsksmart/mock-web3-provider@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@rsksmart/mock-web3-provider/-/mock-web3-provider-1.0.1.tgz#0f46fdea74018369631a4180814b3e0fe16a8d80"
+  integrity sha512-29syghh9X2ju80HXtH2O/tXEkUloCORo1lssLx70Trr1fiaxvpH5sxcFBDzjF0XPwwlrj3pqoQc34sL8EiUNYg==
   dependencies:
     eth-sig-util "^3.0.1"
 
-"@rsksmart/rlogin-dcent-provider@^1.0.2-beta.2":
-  version "1.0.2-beta.2"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dcent-provider/-/rlogin-dcent-provider-1.0.2-beta.2.tgz#bae94b358ffd928bc08df73cf87dcb6895ae5145"
-  integrity sha512-7STeuLv2Ct9EA8Mq3PnDKTWfraqhdYMBm4/aWUmlQLzjaXN6rLaNcMeC5l75cMqu/xh4afuPQTzm+9W6xQw4Lg==
+"@rsksmart/rlogin-dcent-provider@^1.0.2-beta.6":
+  version "1.0.2-beta.6"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dcent-provider/-/rlogin-dcent-provider-1.0.2-beta.6.tgz#a87909cafa697955ab8f7481a961f57636878451"
+  integrity sha512-HgZQ74RMBth59jFdHnxvwEst6Xd0O0Xh3WlTvxdvDRijMOqoCpZAZMrPvduI1ziQ6rwVWjs9ClEBw8rCNyWOcA==
   dependencies:
     "@rsksmart/dcent-provider" "^0.3.0-beta"
-    "@rsksmart/rlogin-dpath" "^1.0.1"
-    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.2-beta.1"
-    "@rsksmart/rlogin-transactions" "^1.0.2-beta.2"
+    "@rsksmart/rlogin-dpath" "^1.0.3"
+    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.2"
+    "@rsksmart/rlogin-transactions" "^1.0.2"
     assert "^2.0.0"
     buffer "^6.0.3"
     stream-browserify "^3.0.0"
@@ -2181,7 +2181,7 @@
   resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dpath/-/rlogin-dpath-1.0.3.tgz#c9863d16b3e6ffc6770f40c05d7e5d865a6b91d6"
   integrity sha512-uWrzaQbnApLIBdVNqF2NdqdfIJ2jG0XrSFC+XJ5Wuo2nap4PVxc45U+GlmTy1qqK9PJ0g/d9F/dR5n51EhqlVw==
 
-"@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.2", "@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.2-beta.1":
+"@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-eip1193-proxy-subprovider/-/rlogin-eip1193-proxy-subprovider-1.0.2.tgz#a5b63e770996f481208b47d09b308d18a8c7d807"
   integrity sha512-CefI6gtv4shMgbWkEakkHF8Igcx7juTrqWJqk8qGAozHU5hsf+yk5yYkrGsCuAI/mz98X2ewhe6Cwuly6hOTIw==
@@ -2207,7 +2207,7 @@
     buffer "^6.0.3"
     stream-browserify "^3.0.0"
 
-"@rsksmart/rlogin-transactions@^1.0.2", "@rsksmart/rlogin-transactions@^1.0.2-beta.2":
+"@rsksmart/rlogin-transactions@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-transactions/-/rlogin-transactions-1.0.2.tgz#324bdd59e65c75235ae84f4482b5b7bbc476afcb"
   integrity sha512-O0UQbeoEj1ynkk7iKTIAxB1YyomfDtA+k1uLeED8hrSd7goNeRWeZj4bmArVV4c3+1msvuVKXlm5n5LXVoPIaA==
@@ -2229,13 +2229,13 @@
     stream-browserify "^3.0.0"
     trezor-connect "^8.2.5"
 
-"@rsksmart/rlogin@^1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.3.3.tgz#8db71b51513c84e65024e9ada986d0e507711672"
-  integrity sha512-VXFYBjO4qlcR+s/HtwmOYeQ8Lcae6lZgto9d5fsbliypxpF+CrUsfq8n6lLdGJSeeazWPTF7a2GnzLw9tqPSSA==
+"@rsksmart/rlogin@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.4.0.tgz#11ec9234b0b430cb63a652ea2c948f01b5f32702"
+  integrity sha512-hGwf0wg/X75HV40f9gqH2xQLTdtnYqKu8Jeb4oPGfY7ac3VSHioXVovHAAEtfUjfmImGn2gCQUzv+slu4A/Eng==
   dependencies:
     "@rsksmart/ipfs-cpinner-client-types" "^0.1.3"
-    "@rsksmart/mock-web3-provider" "^1.0.0"
+    "@rsksmart/mock-web3-provider" "^1.0.1"
     "@rsksmart/rlogin-dpath" "^1.0.1"
     "@rsksmart/vc-json-schemas-parser" "^1.0.0"
     "@types/styled-components" "^5.1.3"
