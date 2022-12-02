@@ -2229,10 +2229,10 @@
     stream-browserify "^3.0.0"
     trezor-connect "^8.2.5"
 
-"@rsksmart/rlogin@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.4.0.tgz#11ec9234b0b430cb63a652ea2c948f01b5f32702"
-  integrity sha512-hGwf0wg/X75HV40f9gqH2xQLTdtnYqKu8Jeb4oPGfY7ac3VSHioXVovHAAEtfUjfmImGn2gCQUzv+slu4A/Eng==
+"@rsksmart/rlogin@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin/-/rlogin-1.4.1.tgz#2c0769a246f2c3f00b92abf5326a1a3eaacfaccf"
+  integrity sha512-hPFLE7V4awtyFXN+nsbF9YLDx2MVK/fofvseckXsMGiXoFUQqvC3n2QzcdM85EYYEBQ2+5zimL2+/piuGh77aQ==
   dependencies:
     "@rsksmart/ipfs-cpinner-client-types" "^0.1.3"
     "@rsksmart/mock-web3-provider" "^1.0.1"
@@ -12675,11 +12675,6 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
-
-rlogin@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/rlogin/-/rlogin-1.0.0.tgz#db07322b31219126625d9d0aa9872d7ebe8ac403"
-  integrity sha1-2wcyKzEhkSZiXZ0KqYctfr6KxAM=
 
 rlp@^2.0.0, rlp@^2.2.3, rlp@^2.2.4:
   version "2.2.6"
