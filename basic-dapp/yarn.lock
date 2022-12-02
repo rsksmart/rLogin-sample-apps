@@ -2008,15 +2008,15 @@
   dependencies:
     eth-sig-util "^3.0.1"
 
-"@rsksmart/rlogin-dcent-provider@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dcent-provider/-/rlogin-dcent-provider-1.0.1.tgz#0ab8188ce1302a2ce0cd4c4453ac16c522ca3c8f"
-  integrity sha512-9QobexcjP+1SmPKz1RwuHFTNANjg/Rh7tR4vmF8j+Od8ZsRn1KP1d1XPONdfE4DdOjC5stWWTaNWWNA8zEJWdA==
+"@rsksmart/rlogin-dcent-provider@^1.0.2-beta.6":
+  version "1.0.2-beta.6"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dcent-provider/-/rlogin-dcent-provider-1.0.2-beta.6.tgz#a87909cafa697955ab8f7481a961f57636878451"
+  integrity sha512-HgZQ74RMBth59jFdHnxvwEst6Xd0O0Xh3WlTvxdvDRijMOqoCpZAZMrPvduI1ziQ6rwVWjs9ClEBw8rCNyWOcA==
   dependencies:
     "@rsksmart/dcent-provider" "^0.3.0-beta"
-    "@rsksmart/rlogin-dpath" "^1.0.1"
-    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.1"
-    "@rsksmart/rlogin-transactions" "^1.0.1"
+    "@rsksmart/rlogin-dpath" "^1.0.3"
+    "@rsksmart/rlogin-eip1193-proxy-subprovider" "^1.0.2"
+    "@rsksmart/rlogin-transactions" "^1.0.2"
     assert "^2.0.0"
     buffer "^6.0.3"
     stream-browserify "^3.0.0"
@@ -2028,7 +2028,7 @@
   resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-dpath/-/rlogin-dpath-1.0.3.tgz#c9863d16b3e6ffc6770f40c05d7e5d865a6b91d6"
   integrity sha512-uWrzaQbnApLIBdVNqF2NdqdfIJ2jG0XrSFC+XJ5Wuo2nap4PVxc45U+GlmTy1qqK9PJ0g/d9F/dR5n51EhqlVw==
 
-"@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.1", "@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.2":
+"@rsksmart/rlogin-eip1193-proxy-subprovider@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-eip1193-proxy-subprovider/-/rlogin-eip1193-proxy-subprovider-1.0.2.tgz#a5b63e770996f481208b47d09b308d18a8c7d807"
   integrity sha512-CefI6gtv4shMgbWkEakkHF8Igcx7juTrqWJqk8qGAozHU5hsf+yk5yYkrGsCuAI/mz98X2ewhe6Cwuly6hOTIw==
@@ -2054,7 +2054,7 @@
     buffer "^6.0.3"
     stream-browserify "^3.0.0"
 
-"@rsksmart/rlogin-transactions@^1.0.1", "@rsksmart/rlogin-transactions@^1.0.2":
+"@rsksmart/rlogin-transactions@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-transactions/-/rlogin-transactions-1.0.2.tgz#324bdd59e65c75235ae84f4482b5b7bbc476afcb"
   integrity sha512-O0UQbeoEj1ynkk7iKTIAxB1YyomfDtA+k1uLeED8hrSd7goNeRWeZj4bmArVV4c3+1msvuVKXlm5n5LXVoPIaA==
