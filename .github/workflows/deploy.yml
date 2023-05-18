@@ -1,7 +1,7 @@
 name: rLogin front-ends for basic and permissioned dapp deploy to prod
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
