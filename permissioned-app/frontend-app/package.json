@@ -18,8 +18,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "export SET NODE_OPTIONS=--openssl-legacy-provider && -scripts start",
+    "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && -scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress": "./node_modules/.bin/cypress open"
