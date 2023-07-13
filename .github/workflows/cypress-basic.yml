@@ -20,7 +20,7 @@ jobs:
         with:
           working-directory: basic-dapp
           build: yarn
-          start: yarn start
+          start: yarn start:cypress
           record: false
           wait-on-timeout: 120
           wait-on: 'http://localhost:3000'

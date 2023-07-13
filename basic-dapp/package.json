@@ -20,6 +20,7 @@
   },
   "scripts": {
     "start": "export SET NODE_OPTIONS=\"--max_old_space_size=4096 --openssl-legacy-provider\" && react-scripts start",
+    "start:cypress": "react-scripts start",
     "build": "export SET NODE_OPTIONS=\"--max_old_space_size=4096 --openssl-legacy-provider\" && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
