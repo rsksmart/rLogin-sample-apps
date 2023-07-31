@@ -33,7 +33,7 @@ const rLogin = new RLogin({
       package: WalletConnect2Provider,
       options: {
         projectId: '4d14850f2288242161063a7dd66a7b0a',
-        chains: ['31'],
+        chains: supportedChains,
         showQrModal: true,
         rpcMap: rpcUrls,
       }

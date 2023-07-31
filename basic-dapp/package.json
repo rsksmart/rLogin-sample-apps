@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@portis/web3": "^4.0.0",
-    "@rsksmart/rlogin": "1.5.1",
+    "@rsksmart/rlogin": "1.5.3-beta.1",
     "@rsksmart/rlogin-dcent-provider": "^1.0.2-beta.6",
     "@rsksmart/rlogin-ledger-provider": "^1.0.1",
     "@rsksmart/rlogin-trezor-provider": "^1.0.1",
