@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import RLogin from '@rsksmart/rlogin'
-import WalletConnectProvider from '@walletconnect/web3-provider'
+// import WalletConnectProvider from '@walletconnect/web3-provider'
+import { WalletConnect2Provider } from '@rsksmart/rlogin-walletconnect2-provider'
 import Eth from 'ethjs-query'
 import Portis from '@portis/web3'
 import Torus from '@toruslabs/torus-embed'
@@ -29,10 +30,12 @@ const rLogin = new RLogin({
   cacheProvider: false,
   providerOptions: {
     walletconnect: {
-      package: WalletConnectProvider,
+      package: WalletConnect2Provider,
       options: {
-        rpc: rpcUrls,
-        bridge: 'https://walletconnect-bridge.rifos.org/'
+        projectId: '4d14850f2288242161063a7dd66a7b0a',
+        chains: ['31'],
+        showQrModal: true,
+        rpcMap: rpcUrls,
       }
     },
     portis: {

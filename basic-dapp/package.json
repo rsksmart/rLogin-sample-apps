@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@portis/web3": "^4.0.0",    
+    "@portis/web3": "^4.0.0",
     "@rsksmart/rlogin": "1.5.1",
     "@rsksmart/rlogin-dcent-provider": "^1.0.2-beta.6",
     "@rsksmart/rlogin-ledger-provider": "^1.0.1",
     "@rsksmart/rlogin-trezor-provider": "^1.0.1",
+    "@rsksmart/rlogin-walletconnect2-provider": "^1.0.0",
     "@toruslabs/torus-embed": "^1.13.4",
+    "@walletconnect/modal": "^2.6.1",
     "@walletconnect/web3-provider": "^1.6.5",
     "ethers": "^5.4.7",
     "ethjs-query": "^0.3.8",
@@ -33,18 +35,11 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
   "devDependencies": {
     "@rsksmart/mock-web3-provider": "^1.0.1",
     "@testing-library/jest-dom": "^5.11.4",
@@ -54,5 +49,8 @@
     "cypress": "^6.4.0",
     "enzyme": "^3.11.0",
     "eslint-plugin-cypress": "^2.11.2"
+  },
+  "resolutions": {
+    "@babel/generator": "7.20.3"
   }
 }
