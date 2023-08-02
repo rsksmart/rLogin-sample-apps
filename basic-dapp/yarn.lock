@@ -89,13 +89,23 @@
     json5 "^2.2.2"
     semver "^6.3.1"
 
-"@babel/generator@7.20.3", "@babel/generator@^7.12.1", "@babel/generator@^7.22.7", "@babel/generator@^7.22.9":
+"@babel/generator@^7.12.1":
   version "7.20.3"
   resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.20.3.tgz#e58c9ae2f7bf7fdf4899160cf1e04400a82cd641"
   integrity sha512-Wl5ilw2UD1+ZYprHVprxHZJCFeBWlzZYOovE4SDYLZnqCOD11j+0QzNeEWKLLTWM7nixrZEh7vNIyb76MyJg3A==
   dependencies:
     "@babel/types" "^7.20.2"
     "@jridgewell/gen-mapping" "^0.3.2"
+    jsesc "^2.5.1"
+
+"@babel/generator@^7.22.7", "@babel/generator@^7.22.9":
+  version "7.22.9"
+  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.22.9.tgz#572ecfa7a31002fa1de2a9d91621fd895da8493d"
+  integrity sha512-KtLMbmicyuK2Ak/FTCJVbDnkN1SlT8/kceFTiuDiiRUUSMnHMidxSCdG4ndkTOHHpoomWe/4xkvHkEOncwjYIw==
+  dependencies:
+    "@babel/types" "^7.22.5"
+    "@jridgewell/gen-mapping" "^0.3.2"
+    "@jridgewell/trace-mapping" "^0.3.17"
     jsesc "^2.5.1"
 
 "@babel/helper-annotate-as-pure@^7.22.5":
@@ -1958,7 +1968,7 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.15.tgz#d7c6e6755c78567a951e04ab52ef0fd26de59f32"
   integrity sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==
 
-"@jridgewell/trace-mapping@^0.3.9":
+"@jridgewell/trace-mapping@^0.3.17", "@jridgewell/trace-mapping@^0.3.9":
   version "0.3.18"
   resolved "https://registry.yarnpkg.com/@jridgewell/trace-mapping/-/trace-mapping-0.3.18.tgz#25783b2086daf6ff1dcb53c9249ae480e4dd4cd6"
   integrity sha512-w+niJYzMHdd7USdiH2U6869nqhD2nbfZXND5Yp93qIbEmnDNk7PD48o+YchRVpzMU7M6jVCbenTR7PA1FLQ9pA==
@@ -2380,10 +2390,10 @@
     stream-browserify "^3.0.0"
     trezor-connect "^8.2.5"
 
-"@rsksmart/rlogin-walletconnect2-provider@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-walletconnect2-provider/-/rlogin-walletconnect2-provider-1.0.0.tgz#d74f45852c2cb1d266691fa4359717c37ba9c23b"
-  integrity sha512-imioygFQ+4Z6wimv2NiKi+Xo9B7cD584Y5NnO1a/rvvwZAOQn9Q7DxXzBfEEGOKWRua975UR2NHMJaPZ4X6eFQ==
+"@rsksmart/rlogin-walletconnect2-provider@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@rsksmart/rlogin-walletconnect2-provider/-/rlogin-walletconnect2-provider-1.0.1.tgz#6c9cd057efeebd38e7e9ffdaeec46c0207ff0c81"
+  integrity sha512-EM+PxfeaZgkTzJrftyJmr4Q06m+zi0TnkfOx6mixwp+3OYzKA52MyH7Qt7W7febM9vMRW/ufsDyq3GVd18p0EQ==
   dependencies:
     "@walletconnect/ethereum-provider" "^2.9.1"
     "@walletconnect/modal" "^2.6.1"
