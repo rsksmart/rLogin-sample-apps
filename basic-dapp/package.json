@@ -3,18 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@portis/web3": "^4.0.0",    
-    "@rsksmart/rlogin": "1.5.1",
+    "@portis/web3": "^4.0.0",
+    "@rsksmart/rlogin": "1.5.3-beta.1",
     "@rsksmart/rlogin-dcent-provider": "^1.0.2-beta.6",
     "@rsksmart/rlogin-ledger-provider": "^1.0.1",
     "@rsksmart/rlogin-trezor-provider": "^1.0.1",
+    "@rsksmart/rlogin-walletconnect2-provider": "^1.0.1",
     "@toruslabs/torus-embed": "^1.13.4",
     "@walletconnect/web3-provider": "^1.6.5",
     "ethers": "^5.4.7",
     "ethjs-query": "^0.3.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-scripts": "4.0.2",
+    "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1",
     "web3": "^1.5.3"
   },
@@ -33,18 +34,11 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
   "devDependencies": {
     "@rsksmart/mock-web3-provider": "^1.0.1",
     "@testing-library/jest-dom": "^5.11.4",
