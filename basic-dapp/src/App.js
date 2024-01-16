@@ -11,6 +11,7 @@ import { dcentProviderOptions } from '@rsksmart/rlogin-dcent-provider'
 import './App.css';
 import Web3 from 'web3'
 import { ethers } from 'ethers'
+import { eth_signTypedData } from "./config/eth_signTypedData";
 
 const rpcUrls = {
   30: 'https://public-node.rsk.co',
@@ -24,9 +25,7 @@ const rpcUrls = {
 
 const supportedChains = Object.keys(rpcUrls).map(Number)
 
-const requiredChainsId = [31]
-
-const optionalChainsId = Object.keys(rpcUrls).map(Number).filter(chainId => chainId !== 31)
+const optionalChains = Object.keys(rpcUrls).map(Number).filter(id => [31].includes(id))
 
 // Create a new rLogin instance with your custom providerOptions outside of the 
 // component.
@@ -37,8 +36,8 @@ const rLogin = new RLogin({
       package: WalletConnect2Provider,
       options: {
         projectId: '4d14850f2288242161063a7dd66a7b0a',
-        chains: requiredChainsId,
-        optionalChainsId: optionalChainsId,
+        optionalChains: optionalChains,
+        optionalMethods: ['eth_sendTransaction', 'personal_sign', 'eth_signTypedData'],
         showQrModal: true,
         rpcMap: rpcUrls,
       }
@@ -91,10 +90,13 @@ function App() {
   const [sendAmount, setSendAmount] = useState('100000')
   const [sendResponse, setSendResponse] = useState(null)
 
-  // sign typed data:
+  // sign typed data v4:
   const [signTypedDataInput, setSignTypedDataInput] = useState('')
   const [signTypedDataResponse, setSignTypedDataResponse] = useState(null)
-
+  
+  // sign typed data:
+  const [signTypedDataInputNormal, setSignTypedDataInputNormal] = useState('')
+  const [signTypedDataResponseNormal, setSignTypedDataResponseNormal] = useState(null)
   // Use the rLogin instance to connect to the provider
   const handleLogin = () => {
     rLogin.connect()
@@ -173,8 +175,8 @@ function App() {
     },
   };
 
-  // Sign typed data
-  const handleSignTypedData = (value) => {
+  // Sign typed data v4
+  const handleSignTypedDataV4 = (value) => {
     setSignTypedDataResponse('loading...')
     msgParams.message.contents = value
 
@@ -190,10 +192,25 @@ function App() {
     .catch(error => setSignTypedDataResponse(`[ERROR]: ${error.message}`))
   }
 
+  const handleSignTypedData = (value) => {
+    setSignTypedDataResponseNormal('loading...')
+    eth_signTypedData.domain.chainId = chainId
+    eth_signTypedData.message.contents = value
+    
+    providerRPC(
+      rLoginResponse.provider,
+      {
+        method: 'eth_signTypedData',
+        params: [ account, JSON.stringify(eth_signTypedData) ],
+        from: account
+      }
+    )
+    .then(response => setSignTypedDataResponseNormal(response))
+    .catch(error => setSignTypedDataResponseNormal(`[ERROR]: ${error.message}`))
+  }
   // Sign data
   const handleSignData = (value) => {
     setSignDataResponse('loading...')
-
     providerRPC(
       rLoginResponse.provider,
       {
@@ -300,7 +317,7 @@ function App() {
         <p>
           <button onClick={handleLogin} disabled={rLoginResponse}>Connect with rLogin</button>
           <button id="logout" onClick={() => handleLogOut(rLoginResponse)} disabled={!rLoginResponse}>Logout</button>
-          <button onClick={() => { localStorage.removeItem('WEB3_CONNECT_CACHED_PROVIDER'); location.reload() }}>Start over</button>
+          <button onClick={() => { localStorage.clear(); location.reload() }}>Start over</button>
         </p>
         <div className="response">{connectResponse}</div>
       </section>
@@ -314,17 +331,34 @@ function App() {
               {chainId && <li className="chainId"><strong>ChainId: </strong>{chainId}</li>}
             </ul>
           </section>
-          
+
           <section id="signData">
             <h2>Sign Data with personal_sign</h2>
             <p>
               <label htmlFor="dataInput">Value: </label>
-              <input name="dataInput" type="text" value={signDataInput} onChange={evt => setSignDataInput(evt.target.value)} />
-              <button className="sign" onClick={() => handleSignData(signDataInput)}>Sign Data</button>
-              <button className="signWeb3" onClick={() => handleSignDataWEB3(signDataInput)}>Sign Data Web3</button>
-              <button className="signEthers" onClick={() => handleSignDataEthers(signDataInput)}>Sign Data Ethers</button>
+              <input
+                name="dataInput"
+                type="text"
+                value={signDataInput}
+                onChange={evt => setSignDataInput(evt.target.value)}
+              />
+              <button
+                className="sign"
+                onClick={() => handleSignData(signDataInput)}
+              >Sign Data
+              </button>
+              <button
+                className="signWeb3"
+                onClick={() => handleSignDataWEB3(signDataInput)}
+              >Sign Data Web3
+              </button>
+              <button
+                className="signEthers"
+                onClick={() => handleSignDataEthers(signDataInput)}
+              >Sign Data Ethers
+              </button>
             </p>
-            
+
             <p>Signed Data Response:</p>
             <div className="response">{signDataResponse}</div>
           </section>
@@ -333,16 +367,39 @@ function App() {
             <h2>Send Transaction</h2>
             <p>
               <label htmlFor="sendToInput">Send to: </label>
-              <input id="sendToInput" name="sendToInput" type="text" value={sendToInput} onChange={evt => setSendToInput(evt.target.value)} />
+              <input
+                id="sendToInput"
+                name="sendToInput"
+                type="text"
+                value={sendToInput}
+                onChange={evt => setSendToInput(evt.target.value)}
+              />
             </p>
             <p>
               <label htmlFor="sendAmount">Amount: </label>
-              <input name="sendAmount" type="number" value={sendAmount} onChange={evt => setSendAmount(evt.target.value)} />
+              <input
+                name="sendAmount"
+                type="number"
+                value={sendAmount}
+                onChange={evt => setSendAmount(evt.target.value)}
+              />
             </p>
             <p>
-              <button className="send" onClick={() => handleSendTransaction(sendToInput, sendAmount)}>Send Transaction</button>
-              <button className="sendWeb3" onClick={() => handleSendTransactionWEB3(sendToInput, sendAmount)}>Send Transaction WEB3</button>
-              <button className="sendEthers" onClick={() => handleSendTransactionEthers(sendToInput, sendAmount)}>Send Transaction Ethers</button>
+              <button
+                className="send"
+                onClick={() => handleSendTransaction(sendToInput, sendAmount)}
+              >Send Transaction
+              </button>
+              <button
+                className="sendWeb3"
+                onClick={() => handleSendTransactionWEB3(sendToInput, sendAmount)}
+              >Send Transaction WEB3
+              </button>
+              <button
+                className="sendEthers"
+                onClick={() => handleSendTransactionEthers(sendToInput, sendAmount)}
+              >Send Transaction Ethers
+              </button>
             </p>
 
             <p>Send Response:</p>
@@ -350,12 +407,43 @@ function App() {
           </section>
 
           <section id="sendTypedData">
-            <h2>Sign Typed Data</h2>
+            <h2>Sign Typed Data V4</h2>
             <label htmlFor="dataInput">Value: </label>
-            <input name="dataInput" type="text" value={signTypedDataInput} onChange={evt => setSignTypedDataInput(evt.target.value)} />
-            <p><button className="signTypeData" onClick={() => handleSignTypedData(signTypedDataInput)}>Sign Typed Data</button></p>
+            <input
+              name="dataInput"
+              type="text"
+              value={signTypedDataInput}
+              onChange={evt => setSignTypedDataInput(evt.target.value)}
+            />
+            <p>
+              <button
+                className="signTypeData"
+                onClick={() => handleSignTypedDataV4(signTypedDataInput)}
+              >Sign Typed Data
+              </button>
+            </p>
             <p>Sign Response:</p>
             <div className="response">{signTypedDataResponse}</div>
+          </section>
+          {/* SIGN TYPED DATA NORMAL */}
+          <section id="sendTypedData">
+            <h2>Sign Typed Data</h2>
+            <label htmlFor="dataInput">Value: </label>
+            <input
+              name="dataInput"
+              type="text"
+              value={signTypedDataInputNormal}
+              onChange={evt => setSignTypedDataInputNormal(evt.target.value)}
+            />
+            <p>
+              <button
+                className="signTypeData"
+                onClick={() => handleSignTypedData(signTypedDataInputNormal)}
+              >Sign Typed Data
+              </button>
+            </p>
+            <p>Sign Response:</p>
+            <div className="response">{signTypedDataResponseNormal}</div>
           </section>
         </div>
       )}
